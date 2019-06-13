@@ -9,7 +9,12 @@ package attackgame.Model;
  *
  * @author joris
  */
-public abstract class Animal {
+public abstract class Animal extends Element {
     //test
+    public int sex; 
+    Action action = new Action();
+    public int move ;
+    public boolean carnivore;
+    public String attack;
     //Faire un get nb Specie Still Alive
 }

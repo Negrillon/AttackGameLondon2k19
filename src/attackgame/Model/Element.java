@@ -7,8 +7,11 @@ package attackgame.Model;
 
 /**
  *
- * @author joris
+ * @author Roman
  */
-public class Move implements Action {
+public class Element {
+    public int posx ;
+    public int posy ; 
+    public String name ;
     
 }
