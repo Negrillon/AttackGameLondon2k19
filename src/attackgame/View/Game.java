@@ -5,6 +5,8 @@
  */
 package attackgame.View;
 
+import attackgame.Model.Map;
+
 /**
  *
  * @author joris
@@ -16,7 +18,17 @@ public class Game extends javax.swing.JFrame {
      */
     public Game() {
         initComponents();
-        
+        //initialisation de la map
+        mapView.addRowSelectionInterval(0, 5);
+        mapView.addColumnSelectionInterval(0,5);
+//        for (int i = 0; i < Map.getInstance().getMap().length; i++) {
+//            mapView.addRowSelectionInterval(i, i);
+//            for (int j = 0; j < Map.getInstance().getMap()[1].length; j++) {
+//                mapView.addColumnSelectionInterval(j, i);
+//                //mapView.editCellAt(i, j);
+//            }
+//            System.out.println();
+//        }
     }
 
     /**
@@ -30,6 +42,12 @@ public class Game extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         score = new javax.swing.JTable();
+        up = new javax.swing.JButton();
+        down = new javax.swing.JButton();
+        right = new javax.swing.JButton();
+        left = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        mapView = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,21 +76,103 @@ public class Game extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(score);
 
+        up.setText("UP");
+        up.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                upActionPerformed(evt);
+            }
+        });
+
+        down.setText("DOWN");
+        down.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                downActionPerformed(evt);
+            }
+        });
+
+        right.setText("RIGHT");
+        right.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rightActionPerformed(evt);
+            }
+        });
+
+        left.setText("LEFT");
+        left.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                leftActionPerformed(evt);
+            }
+        });
+
+        mapView.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane2.setViewportView(mapView);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 263, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(91, 91, 91)
+                        .addComponent(left)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(up)
+                            .addComponent(down))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(right))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(up)
+                        .addGap(1, 1, 1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(down)
+                            .addComponent(right)
+                            .addComponent(left)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void upActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upActionPerformed
+        // TODO add your handling code here:
+        //Déplacement haut
+        
+    }//GEN-LAST:event_upActionPerformed
+
+    private void leftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leftActionPerformed
+        // TODO add your handling code here:
+        //Déplacement gauche
+    }//GEN-LAST:event_leftActionPerformed
+
+    private void downActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_downActionPerformed
+        // TODO add your handling code here:
+        //Déplacement bas
+    }//GEN-LAST:event_downActionPerformed
+
+    private void rightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rightActionPerformed
+        // TODO add your handling code here:
+        //Déplacement droite
+    }//GEN-LAST:event_rightActionPerformed
 
     /**
      * @param args the command line arguments
@@ -111,7 +211,13 @@ public class Game extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton down;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JButton left;
+    private javax.swing.JTable mapView;
+    private javax.swing.JButton right;
     private javax.swing.JTable score;
+    private javax.swing.JButton up;
     // End of variables declaration//GEN-END:variables
 }

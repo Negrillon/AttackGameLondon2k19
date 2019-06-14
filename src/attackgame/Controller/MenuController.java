@@ -19,8 +19,8 @@ public class MenuController {
 
     private static MenuController menuControllerInstance = null;
     private static MenuView menuView = new MenuView();
-    private Map mapModel = new Map();
-    
+    //private Map mapModel = new Map();
+
     static int lvlChoose = 0;
     boolean play = false;
 
@@ -36,18 +36,22 @@ public class MenuController {
         return menuControllerInstance;
     }
 
+    public static int getLvlChoose() {
+        return lvlChoose;
+    }
+
+    public static void setLvlChoose(int lvlChoose) {
+        MenuController.lvlChoose = lvlChoose;
+    }
+
     public void Play() {
         System.out.println("Game loading");
         GameController.getInstance();
         menu.dispose();
-        System.out.println(Map.getInstance().getMap().length);
-        System.out.println(Map.getInstance().getMap()[1].length);
-        //Création-Initialisation Map
-       // System.out.println(menuView.jComboBox1.getItemAt(menuView.jComboBox1.getSelectedIndex()));
-        //System.out.println(menuView.choiceRow.getSelectedIndex());
-        //mapModel.setMap(new int[Integer.parseInt(menuView.choiceRow.)][]);
-        //System.out.println(mapModel.map.length);
-        //System.out.println(mapModel.map[1].length);
+        
+        //Test pour vérifier la dimension du tabbleau
+//        System.out.println(Map.getInstance().getMap().length);
+//        System.out.println(Map.getInstance().getMap()[1].length);
     }
 
     public void checkClickPlay() {

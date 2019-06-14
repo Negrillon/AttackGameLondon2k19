@@ -5,6 +5,8 @@
  */
 package attackgame.Model;
 
+import attackgame.View.Game;
+
 /**
  *
  * @author joris
@@ -21,11 +23,25 @@ public class Map {
     public void setMap(int[][] map) {
         this.map = map;
     }
-    
+
     public static Map getInstance() {
         if (mapInstance == null) {
             mapInstance = new Map();
         }
         return mapInstance;
+    }
+
+    public void drawMap(int[][] map, Game game) {
+        for (int i = 0; i < map.length; i++) {
+            for (int j = 0; j < map[1].length; j++) {
+                System.out.print(this.getMap()[i][j]);
+                
+            }
+            System.out.println();
+        }
+    }
+    
+    public void initialisationMapTest(int[][] map){
+        
     }
 }
