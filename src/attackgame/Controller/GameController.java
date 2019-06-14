@@ -5,6 +5,8 @@
  */
 package attackgame.Controller;
 
+import attackgame.Model.Map;
+import attackgame.Model.Registre_Element;
 import attackgame.View.Game;
 
 /**
@@ -19,6 +21,19 @@ public class GameController {
     public GameController() {
         game = new Game();
         game.setVisible(true);
+        /*Registre_Element registre =  new Registre_Element();
+        registre.remplirList();
+        Map.getInstance().remplirMap(registre.listElements);
+        Map.getInstance().afficherMap();
+        for (int i = 0; i < registre.listElements.size(); i++) {
+            registre.listElements.get(i).move_right(); 
+            System.out.println(registre.listElements.get(i).posy);
+        }
+        
+        Map.getInstance().remplirMap(registre.listElements);
+        Map.getInstance().afficherMap();*/
+        
+        
     }
 
     public static GameController getInstance() {

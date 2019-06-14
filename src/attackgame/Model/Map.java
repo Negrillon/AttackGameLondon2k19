@@ -5,6 +5,8 @@
  */
 package attackgame.Model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author joris
@@ -28,4 +30,28 @@ public class Map {
         }
         return mapInstance;
     }
+    
+    public void afficherMap()
+    {
+        for (int i = 0; i < map.length; i++)
+        {
+            for (int j = 0; j < map[1].length; j++)
+            {    
+                System.out.print(map[i][j]);
+            }
+            System.out.println();
+        }
+    }
+    
+    public void remplirMap(ArrayList<Element> listElements)
+    {
+        for (int i = 0; i < listElements.size(); i++) {
+            
+            int x = listElements.get(i).posx;
+            int y = listElements.get(i).posy;
+            Map.getInstance().getMap()[x][y] = 1;
+        }
+        
+    }
+    
 }

@@ -42,6 +42,7 @@ public class MenuController {
         menu.dispose();
         System.out.println(Map.getInstance().getMap().length);
         System.out.println(Map.getInstance().getMap()[1].length);
+        
         //Création-Initialisation Map
        // System.out.println(menuView.jComboBox1.getItemAt(menuView.jComboBox1.getSelectedIndex()));
         //System.out.println(menuView.choiceRow.getSelectedIndex());

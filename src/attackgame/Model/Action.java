@@ -15,28 +15,32 @@ import java.util.Random;
 public class Action{
     Random rand = new Random();
     
-    public void move_up (int posy, int move)
+    public void move_up (Animal a1)
     {
-        int a = rand.nextInt(move);
-        posy-=a ;     
+        int a = rand.nextInt(a1.move);
+        Map.getInstance().getMap()[a1.posx][a1.posy] = 0;
+        a1.posx-=a ;  
     }
     
-    public void move_down (int posy, int move)
+    public void move_right (Animal a1)
     {
-        int a = rand.nextInt(move);
-        posy+=a ;       
+        int a = rand.nextInt(a1.move);
+        Map.getInstance().getMap()[a1.posx][a1.posy] = 0;
+        a1.posy+=a ;       
     }
     
-    public void move_left (int posx, int move)
+    public void move_left (Animal a1)
     {
-        int a = rand.nextInt(move);
-        posx-=a ; 
+        int a = rand.nextInt(a1.move);
+        Map.getInstance().getMap()[a1.posx][a1.posy] = 0;
+        a1.posy-=a ;  
     }
     
-    public void move_right (int posx, int move)
+    public void move_down (Animal a1)
     {
-        int a = rand.nextInt(move);
-        posx+=a ; 
+        int a = rand.nextInt(a1.move);
+        Map.getInstance().getMap()[a1.posx][a1.posy] = 0;
+        a1.posx+=a ;
     }
     
     public void attack (Animal a1, Animal a2)
