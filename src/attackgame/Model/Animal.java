@@ -16,5 +16,6 @@ public abstract class Animal extends Element {
     public int move ;
     public boolean carnivore;
     public String attack;
+    
     //Faire un get nb Specie Still Alive
 }
