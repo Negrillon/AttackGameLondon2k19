@@ -20,6 +20,7 @@ public class MenuView extends javax.swing.JFrame {
      */
     public MenuView() {
         initComponents();
+        this.setTitle("Menu");
         for (int i = 5; i <= 200; i += 5) {
             choiceRow.addItem(i);
             choiceColumn.addItem(i);

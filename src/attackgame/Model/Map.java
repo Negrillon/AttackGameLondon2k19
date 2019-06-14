@@ -23,6 +23,10 @@ public class Map {
     public void setMap(int[][] map) {
         this.map = map;
     }
+    
+    public void setMap(int x, int y, int value){
+        this.map[x][y]= value;
+    }
 
     public static Map getInstance() {
         if (mapInstance == null) {
