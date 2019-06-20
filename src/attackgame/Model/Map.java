@@ -5,11 +5,9 @@
  */
 package attackgame.Model;
 
-<<<<<<< HEAD
+
 import java.util.ArrayList;
-=======
 import attackgame.View.Game;
->>>>>>> b51fc55d7680903728635976eb3b0b50a43dc5b8
 
 /**
  *
@@ -38,7 +36,6 @@ public class Map {
         }
         return mapInstance;
     }
-<<<<<<< HEAD
     
     public void afficherMap()
     {
@@ -47,20 +44,19 @@ public class Map {
             for (int j = 0; j < map[1].length; j++)
             {    
                 System.out.print(map[i][j]);
-=======
+            }
+        }
+    }
 
     public void drawMap(int[][] map, Game game) {
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[1].length; j++) {
                 System.out.print(this.getMap()[i][j]);
-                
->>>>>>> b51fc55d7680903728635976eb3b0b50a43dc5b8
             }
             System.out.println();
         }
     }
     
-<<<<<<< HEAD
     public void remplirMap(ArrayList<Element> listElements)
     {
         for (int i = 0; i < listElements.size(); i++) {
@@ -72,9 +68,7 @@ public class Map {
         
     }
     
-=======
     public void initialisationMapTest(int[][] map){
         
     }
->>>>>>> b51fc55d7680903728635976eb3b0b50a43dc5b8
 }
