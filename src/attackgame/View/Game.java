@@ -6,9 +6,15 @@
 package attackgame.View;
 
 import attackgame.Model.Map;
+import attackgame.Model.Registre_Element;
 import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Label;
 import java.util.HashSet;
 import java.util.Set;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 /**
  *
@@ -16,15 +22,40 @@ import java.util.Set;
  */
 public class Game extends javax.swing.JFrame {
 
+    GamePanel gamePanel = new GamePanel(Map.getInstance().getMap());
     /**
      * Creates new form Game
      */
     public Game() {
         initComponents();
         this.setTitle("Game");
+        
+        //this.setContentPane(pnl);
+        
+        //panel.add(gamePanel);
+       
+        //this.setContentPane(panel);
+        JPanel jpanel = new JPanel();
+        jpanel.setSize(getWidth()/2, getHeight()/2);
+        JLabel label = new JLabel();
+        
+        label.setText("TEST");
+        ipanel.add(label);
+        ipanel.add(gamePanel);
+        this.setContentPane(ipanel);
+        //gamePanel.paintComponent(this.getGraphics());
+        ipanel.setVisible(true);
+        
+       
+        //this.setContentPane(gamePanel);
+        
+       
+       // gamePanel.paintComponent(this.getGraphics());
+        //pnl.add(new JLabel(new ImageIcon("./src/Ressources/cat.png")));
+        
         //this.setBackground(Color.yellow);
-        panel.setBackground(Color.BLACK);
-        panel.setForeground(Color.red);
+        //panel.setBackground(Color.BLACK);
+        //panel.setForeground(Color.red);
         
         //this.add(new GamePanel());
         //initialisation de la map
@@ -48,13 +79,16 @@ public class Game extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jToolBar1 = new javax.swing.JToolBar();
         jScrollPane1 = new javax.swing.JScrollPane();
         score = new javax.swing.JTable();
         up = new javax.swing.JButton();
         down = new javax.swing.JButton();
         right = new javax.swing.JButton();
         left = new javax.swing.JButton();
-        panel = new java.awt.Panel();
+        ipanel = new java.awt.Panel();
+
+        jToolBar1.setRollover(true);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -111,14 +145,14 @@ public class Game extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
-        panel.setLayout(panelLayout);
-        panelLayout.setHorizontalGroup(
-            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout ipanelLayout = new javax.swing.GroupLayout(ipanel);
+        ipanel.setLayout(ipanelLayout);
+        ipanelLayout.setHorizontalGroup(
+            ipanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 378, Short.MAX_VALUE)
         );
-        panelLayout.setVerticalGroup(
-            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        ipanelLayout.setVerticalGroup(
+            ipanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 198, Short.MAX_VALUE)
         );
 
@@ -139,7 +173,7 @@ public class Game extends javax.swing.JFrame {
                         .addComponent(right))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(19, 19, 19)
-                        .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(ipanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -150,7 +184,7 @@ public class Game extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ipanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(up)
                         .addGap(1, 1, 1)
@@ -167,7 +201,12 @@ public class Game extends javax.swing.JFrame {
     private void upActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upActionPerformed
         // TODO add your handling code here:
         //Déplacement haut
-
+//        for(int i = 0 ; i < Registre_Element.getInstance().listElements.size() ; i++){
+//            Registre_Element.getInstance().listElements.get(i).move_up();
+//            Map.getInstance().remplirMap(Registre_Element.getInstance().listElements);
+//            Map.getInstance().drawMap(Map.getInstance().getMap());
+//        }
+        
     }//GEN-LAST:event_upActionPerformed
 
     private void leftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leftActionPerformed
@@ -222,9 +261,10 @@ public class Game extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton down;
+    private java.awt.Panel ipanel;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JToolBar jToolBar1;
     private javax.swing.JButton left;
-    private java.awt.Panel panel;
     private javax.swing.JButton right;
     private javax.swing.JTable score;
     private javax.swing.JButton up;

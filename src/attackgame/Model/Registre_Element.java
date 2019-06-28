@@ -13,8 +13,17 @@ import java.util.ArrayList;
  * @author Roman
  */
 public class Registre_Element {
+    
+    private static Registre_Element Registre_ElementInstance = null;
+    
     public ArrayList<Element> listElements = new ArrayList<Element>();
     
+    public static Registre_Element getInstance() {
+        if(Registre_ElementInstance == null) {
+            Registre_ElementInstance = new Registre_Element();
+        }
+        return Registre_ElementInstance;
+    }
     
     public void remplirList()
     {

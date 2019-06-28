@@ -5,7 +5,6 @@
  */
 package attackgame.Model;
 
-
 import java.util.ArrayList;
 import attackgame.View.Game;
 
@@ -25,9 +24,9 @@ public class Map {
     public void setMap(int[][] map) {
         this.map = map;
     }
-    
-    public void setMap(int x, int y, int value){
-        this.map[x][y]= value;
+
+    public void setMap(int x, int y, int value) {
+        this.map[x][y] = value;
     }
 
     public static Map getInstance() {
@@ -36,19 +35,16 @@ public class Map {
         }
         return mapInstance;
     }
-    
-    public void afficherMap()
-    {
-        for (int i = 0; i < map.length; i++)
-        {
-            for (int j = 0; j < map[1].length; j++)
-            {    
+
+    public void afficherMap() {
+        for (int i = 0; i < map.length; i++) {
+            for (int j = 0; j < map[1].length; j++) {
                 System.out.print(map[i][j]);
             }
         }
     }
 
-    public void drawMap(int[][] map, Game game) {
+    public void drawMap(int[][] map) {
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[1].length; j++) {
                 System.out.print(this.getMap()[i][j]);
@@ -56,19 +52,23 @@ public class Map {
             System.out.println();
         }
     }
-    
-    public void remplirMap(ArrayList<Element> listElements)
-    {
+
+    public void remplirMap(ArrayList<Element> listElements) {
         for (int i = 0; i < listElements.size(); i++) {
-            
+
             int x = listElements.get(i).posx;
             int y = listElements.get(i).posy;
             Map.getInstance().getMap()[x][y] = 1;
         }
-        
+
     }
-    
-    public void initialisationMapTest(int[][] map){
-        
+
+    public void initialisationMapTest(int[][] map) {
+        for (int i = 0; i < map.length; i++) {
+            for (int j = 0; j < map.length; j++) {
+                Map.getInstance().getMap()[i][j]=0;
+            }
+
+        }
     }
 }

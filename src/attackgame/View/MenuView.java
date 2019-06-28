@@ -146,6 +146,7 @@ public class MenuView extends javax.swing.JFrame {
     private void playActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playActionPerformed
         // TODO add your handling code here:
         Map.getInstance().setMap(new int[choiceRow.getItemAt(choiceRow.getSelectedIndex())][choiceColumn.getItemAt(choiceColumn.getSelectedIndex())]);
+        //Map.getInstance().initialisationMapTest(Map.getInstance().getMap());
         System.out.println(MenuController.getInstance().isPlay());
         MenuController.getInstance().setPlay(true);
         System.out.println(MenuController.getInstance().isPlay());

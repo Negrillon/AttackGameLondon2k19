@@ -6,7 +6,9 @@
 package attackgame.View;
 
 import attackgame.Model.Map;
+import java.awt.Color;
 import java.awt.Graphics;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 /**
@@ -15,20 +17,31 @@ import javax.swing.JPanel;
  */
 public class GamePanel extends JPanel {
 
-    public GamePanel() {
+    private int[][] map;
+    ImageIcon image0 = new ImageIcon("./src/Ressources/cat.png");
+
+    public GamePanel(int[][] mapLoad) {
+        this.map = mapLoad;
         System.out.println("TEST GAME PANEL");
+
     }
 
     @Override
     public void paintComponent(Graphics g) {
-        //g.fillRect(100, 100, 700, 700);
-        for (int i = 0; i < Map.getInstance().getMap().length; i++) {
-            for (int j = 0; j < Map.getInstance().getMap()[1].length; j++) {
-                
-
-            }
-
-        }
-
+        System.out.println("paint component");
+        g.setColor(Color.orange);
+        g.fillRect(0, 0, getWidth(), getHeight());
+        g.setColor(Color.red);
+        g.fillOval(getWidth()/4, getHeight()/4, getWidth()/2, getHeight()/2);
+//        for (int i = 0; i < Map.getInstance().getMap().length; i++) {
+//            for (int j = 0; j < Map.getInstance().getMap()[1].length; j++) {
+//                switch (Map.getInstance().getMap()[i][j]) {
+//                    case 0:
+//                        g.drawImage(image0.getImage(), j*(getHeight()/this.map[0].length), i *(getWidth()/this.map.length), null);
+//                        //System.out.println(image0.getImage());
+//                        break;
+//                }
+//            }
+//        }
     }
 }

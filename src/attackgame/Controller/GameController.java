@@ -28,23 +28,22 @@ public class GameController {
         game = new Game();
         game.setVisible(true);
 //<<<<<<< HEAD
-        /*Registre_Element registre =  new Registre_Element();
-        registre.remplirList();
-        Map.getInstance().remplirMap(registre.listElements);
-        Map.getInstance().afficherMap();
-        for (int i = 0; i < registre.listElements.size(); i++) {
-            registre.listElements.get(i).move_right(); 
-            System.out.println(registre.listElements.get(i).posy);
-        }
+        Registre_Element.getInstance().remplirList();
+//        Registre_Element registre =  new Registre_Element();
+//        registre.remplirList();
+        Map.getInstance().remplirMap(Registre_Element.getInstance().listElements);
+        Map.getInstance().drawMap(Map.getInstance().getMap());
+//        for (int i = 0; i < registre.listElements.size(); i++) {
+//            registre.listElements.get(i).move_right(); 
+//            System.out.println(registre.listElements.get(i).posy);
+//        }
+//        
+//        Map.getInstance().remplirMap(registre.listElements);
+//        Map.getInstance().afficherMap();
         
-        Map.getInstance().remplirMap(registre.listElements);
-        Map.getInstance().afficherMap();*/
         
-        
-//=======
-        
-        Cat cat1 = new Cat(5,6);
-        Map.getInstance().drawMap(Map.getInstance().getMap(), game);
+//        Cat cat1 = new Cat(5,6);
+//        Map.getInstance().drawMap(Map.getInstance().getMap());
         //Map.getInstance().setMap(map[cat1.posx][cat1.posy]);
         
         //Initialise la map (graphiquement)
