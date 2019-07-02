@@ -19,28 +19,44 @@ public class Action{
     {
         int a = rand.nextInt(a1.move);
         Map.getInstance().getMap()[a1.posx][a1.posy] = 0;
-        a1.posx-=a ;  
+        if (a1.posx-a>=0)
+        {
+            a1.posx-=a ;  
+        }
+        else a1.posx=0;
     }
     
     public void move_right (Animal a1)
     {
         int a = rand.nextInt(a1.move);
         Map.getInstance().getMap()[a1.posx][a1.posy] = 0;
-        a1.posy+=a ;       
+        if(a1.posy+a<Map.getInstance().getMap()[0].length)
+        {    
+            a1.posy+=a ;
+        }
+        else a1.posy=Map.getInstance().getMap()[0].length-1;
     }
     
     public void move_left (Animal a1)
     {
         int a = rand.nextInt(a1.move);
         Map.getInstance().getMap()[a1.posx][a1.posy] = 0;
-        a1.posy-=a ;  
+        if (a1.posy-a>=0)
+        {
+            a1.posy-=a ;  
+        }
+        else a1.posy=0;
     }
     
     public void move_down (Animal a1)
     {
         int a = rand.nextInt(a1.move);
         Map.getInstance().getMap()[a1.posx][a1.posy] = 0;
-        a1.posx+=a ;
+        if(a1.posx+a<Map.getInstance().getMap().length)
+        {
+            a1.posx+=a ;
+        }
+        else a1.posx=Map.getInstance().getMap().length-1;
     }
     
     public void attack (Animal a1, Animal a2)

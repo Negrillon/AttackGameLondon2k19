@@ -5,6 +5,7 @@
  */
 package attackgame.View;
 
+import attackgame.Controller.GameController;
 import attackgame.Model.Map;
 import attackgame.Model.Registre_Element;
 import java.awt.Color;
@@ -36,15 +37,19 @@ public class Game extends javax.swing.JFrame {
        
         //this.setContentPane(panel);
         JPanel jpanel = new JPanel();
-        jpanel.setSize(getWidth()/2, getHeight()/2);
-        JLabel label = new JLabel();
+        jpanel.setSize(getWidth(), getHeight());
+        jpanel.setBackground(Color.red);
+        //JLabel label = new JLabel();
         
-        label.setText("TEST");
-        ipanel.add(label);
-        ipanel.add(gamePanel);
-        this.setContentPane(ipanel);
+        //label.setText("TEST");
+        //jpanel.add(label);
+        jpanel.add(gamePanel);
+        //this.setContentPane(jpanel);
+        this.add(jpanel);
+        
+        
         //gamePanel.paintComponent(this.getGraphics());
-        ipanel.setVisible(true);
+        jpanel.setVisible(true);
         
        
         //this.setContentPane(gamePanel);
@@ -86,7 +91,6 @@ public class Game extends javax.swing.JFrame {
         down = new javax.swing.JButton();
         right = new javax.swing.JButton();
         left = new javax.swing.JButton();
-        ipanel = new java.awt.Panel();
 
         jToolBar1.setRollover(true);
 
@@ -145,36 +149,20 @@ public class Game extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout ipanelLayout = new javax.swing.GroupLayout(ipanel);
-        ipanel.setLayout(ipanelLayout);
-        ipanelLayout.setHorizontalGroup(
-            ipanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 378, Short.MAX_VALUE)
-        );
-        ipanelLayout.setVerticalGroup(
-            ipanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 198, Short.MAX_VALUE)
-        );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(91, 91, 91)
-                        .addComponent(left)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(up)
-                            .addComponent(down))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(right))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(ipanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(91, 91, 91)
+                .addComponent(left)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(up)
+                    .addComponent(down))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(right)
+                .addGap(61, 61, 61)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
@@ -183,9 +171,7 @@ public class Game extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(ipanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(30, 238, Short.MAX_VALUE)
                         .addComponent(up)
                         .addGap(1, 1, 1)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -206,22 +192,30 @@ public class Game extends javax.swing.JFrame {
 //            Map.getInstance().remplirMap(Registre_Element.getInstance().listElements);
 //            Map.getInstance().drawMap(Map.getInstance().getMap());
 //        }
+        int choice=1;
+        GameController.getInstance().moveController(choice, Registre_Element.getInstance());
         
     }//GEN-LAST:event_upActionPerformed
 
     private void leftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leftActionPerformed
         // TODO add your handling code here:
         //Déplacement gauche
+        int choice=3;
+        GameController.getInstance().moveController(choice, Registre_Element.getInstance());
     }//GEN-LAST:event_leftActionPerformed
 
     private void downActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_downActionPerformed
         // TODO add your handling code here:
         //Déplacement bas
+        int choice=2;
+        GameController.getInstance().moveController(choice, Registre_Element.getInstance());
     }//GEN-LAST:event_downActionPerformed
 
     private void rightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rightActionPerformed
         // TODO add your handling code here:
         //Déplacement droite
+        int choice=4;
+        GameController.getInstance().moveController(choice, Registre_Element.getInstance());
     }//GEN-LAST:event_rightActionPerformed
 
     /**
@@ -261,7 +255,6 @@ public class Game extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton down;
-    private java.awt.Panel ipanel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JButton left;

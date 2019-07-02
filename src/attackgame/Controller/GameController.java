@@ -63,6 +63,25 @@ public class GameController {
         }
         return gameControllerInstance;
     }
+    
+    public void moveController(int choice, Registre_Element registre)
+    {
+        switch(choice){
+            case 1:
+                registre.moveAll_up(Map.getInstance());
+                break;
+            case 2:
+                registre.moveAll_down(Map.getInstance());
+                break;
+            case 3:
+                registre.moveAll_left(Map.getInstance());
+                break;
+            case 4:
+                registre.moveAll_right(Map.getInstance());
+                break;
+        }
+    }
+
 
     
 //    public boolean goalTest() {

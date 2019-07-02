@@ -32,6 +32,45 @@ public class Registre_Element {
         
     }
     
+    public void moveAll_up(Map map)
+    {
+        for(int i = 0 ; i < this.listElements.size() ; i++)
+        {
+            this.listElements.get(i).move_up();
+            map.remplirMap(this.listElements);
+            map.drawMap(map.getMap());
+        }
+    }
     
+    public void moveAll_down(Map map)
+    {
+        for(int i = 0 ; i < this.listElements.size() ; i++)
+        {
+            this.listElements.get(i).move_down();
+            map.remplirMap(this.listElements);
+            map.drawMap(map.getMap());
+        } 
+    }
+    
+    public void moveAll_left(Map map)
+    {
+        for(int i = 0 ; i < this.listElements.size() ; i++)
+        {
+            this.listElements.get(i).move_left();
+            map.remplirMap(this.listElements);
+            map.drawMap(map.getMap());
+        } 
+    }
+    
+    public void moveAll_right(Map map)
+    {
+        for(int i = 0 ; i < this.listElements.size() ; i++)
+        {
+            this.listElements.get(i).move_right();
+            map.remplirMap(this.listElements);
+            map.drawMap(map.getMap());
+        } 
+    }
+
 
 }
