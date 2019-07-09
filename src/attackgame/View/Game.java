@@ -37,7 +37,7 @@ public class Game extends javax.swing.JFrame {
        
         //this.setContentPane(panel);
         JPanel jpanel = new JPanel();
-        jpanel.setSize(getWidth(), getHeight());
+        jpanel.setSize(100, 100);
         jpanel.setBackground(Color.red);
         //JLabel label = new JLabel();
         
