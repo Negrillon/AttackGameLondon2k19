@@ -35,7 +35,7 @@ public class GamePanel extends JPanel {
         g.setColor(Color.red);
         g.fillOval(getWidth()/4, getHeight()/4, getWidth()/2, getHeight()/2);
 
-
+//COMMENT
 //        g.drawImage(image0.getImage(), 1*getHeight(), 1*getWidth(), null);
 
 //        for (int i = 0; i < Map.getInstance().getMap().length; i++) {
@@ -49,7 +49,7 @@ public class GamePanel extends JPanel {
 //                      g.drawImage(image0.getImage(), j*(100/Map.getInstance().getMap().length),i*(100/Map.getInstance().getMap()[1].length), null);
                         //g.drawImage(image0.getImage(), get, j , null);
                         //System.out.println(image0.getImage());
-                        
+//COMENT
                 }
             }
 //        }

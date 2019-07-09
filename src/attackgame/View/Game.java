@@ -37,19 +37,20 @@ public class Game extends javax.swing.JFrame {
        
         //this.setContentPane(panel);
         JPanel jpanel = new JPanel();
-        jpanel.setSize(100, 100);
+        jpanel.setSize(this.getWidth(),this.getHeight());
         jpanel.setBackground(Color.red);
-        //JLabel label = new JLabel();
-        
-        //label.setText("TEST");
-        //jpanel.add(label);
+        JLabel label = new JLabel();
         jpanel.add(gamePanel);
-        //this.setContentPane(jpanel);
+        
+        label.setText("TEST");
+        //jpanel.add(label);
+
+//        this.setContentPane(jpanel);
         this.add(jpanel);
         
         
         //gamePanel.paintComponent(this.getGraphics());
-        jpanel.setVisible(true);
+        //jpanel.setVisible(true);
         
        
         //this.setContentPane(gamePanel);
@@ -85,8 +86,6 @@ public class Game extends javax.swing.JFrame {
     private void initComponents() {
 
         jToolBar1 = new javax.swing.JToolBar();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        score = new javax.swing.JTable();
         up = new javax.swing.JButton();
         down = new javax.swing.JButton();
         right = new javax.swing.JButton();
@@ -95,31 +94,6 @@ public class Game extends javax.swing.JFrame {
         jToolBar1.setRollover(true);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        score.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Name", "Value"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(score);
 
         up.setText("UP");
         up.addActionListener(new java.awt.event.ActionListener() {
@@ -162,22 +136,18 @@ public class Game extends javax.swing.JFrame {
                     .addComponent(down))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(right)
-                .addGap(61, 61, 61)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(198, 198, 198))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 238, Short.MAX_VALUE)
-                        .addComponent(up)
-                        .addGap(1, 1, 1)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(down)
-                            .addComponent(right)
-                            .addComponent(left))))
+                .addGap(30, 238, Short.MAX_VALUE)
+                .addComponent(up)
+                .addGap(1, 1, 1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(down)
+                    .addComponent(right)
+                    .addComponent(left))
                 .addContainerGap())
         );
 
@@ -255,11 +225,9 @@ public class Game extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton down;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JButton left;
     private javax.swing.JButton right;
-    private javax.swing.JTable score;
     private javax.swing.JButton up;
     // End of variables declaration//GEN-END:variables
 }

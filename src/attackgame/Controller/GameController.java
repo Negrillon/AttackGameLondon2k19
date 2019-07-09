@@ -29,8 +29,8 @@ public class GameController {
     public GameController() {
         //game = new Game();
         //game.setVisible(true);
-        gameTest = new GameTest();
-        gameTest.setVisible(true);
+        game = new Game();
+        game.setVisible(true);
         
 //<<<<<<< HEAD
         Registre_Element.getInstance().remplirList();
