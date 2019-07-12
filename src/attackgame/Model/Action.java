@@ -59,7 +59,7 @@ public class Action{
         else a1.posx=Map.getInstance().getMap().length-1;
     }
     
-    public void attack (Animal a1, Animal a2)
+    public boolean attack (Animal a1, Element a2)
     {
         int a = rand.nextInt(3);
         switch (a)
@@ -89,13 +89,14 @@ public class Action{
         
         if ("Roar".equals(a1.attack) && "Scratch".equals(a2.attack) || "Bite".equals(a1.attack) && "Roar".equals(a2.attack) || "Scratch".equals(a1.attack) && "Bite".equals(a2.attack))
         {
-            
+            return true;
         }
         else if("Roar".equals(a2.attack) && "Scratch".equals(a1.attack)|| "Bite".equals(a2.attack) && "Roar".equals(a1.attack) || "Scratch".equals(a2.attack) && "Bite".equals(a1.attack))
         {
-                    
+             return false;       
         }
         else ;
+        return false;
         
         
     }

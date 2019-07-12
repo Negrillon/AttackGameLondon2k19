@@ -34,5 +34,10 @@ public abstract class Animal extends Element {
     {
         action.move_right(this);
     }
+    
+    public boolean attack(Element a2)
+    {
+        return action.attack(this,  a2);
+    }
     //Faire un get nb Specie Still Alive
 }

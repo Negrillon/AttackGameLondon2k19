@@ -58,7 +58,11 @@ public class Map {
 
             int x = listElements.get(i).posx;
             int y = listElements.get(i).posy;
-            Map.getInstance().getMap()[x][y] = 1;
+            if ("Cat".equals(listElements.get(i).name))
+            {
+                Map.getInstance().getMap()[x][y] = 1;
+            }
+            else Map.getInstance().getMap()[x][y] = 9;
         }
 
     }

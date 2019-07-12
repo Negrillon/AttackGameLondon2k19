@@ -9,25 +9,20 @@ package attackgame.Model;
  *
  * @author Roman
  */
-public class Element {
+public abstract class Element
+{
     public int posx ;
     public int posy ; 
     public String name ;
+    public String attack;
     
-    public void move_up()
-    {
-        
-    }
-    public void move_down()
-    {
-        
-    }
-    public void move_left()
-    {
-        
-    }
-    public void move_right()
-    {
-        
-    }
+    public void move_up(){}
+
+    public void move_down(){}
+
+    public void move_left(){}
+
+    public void move_right(){}
+    
+    public boolean attack(Element a2){return false;}
 }

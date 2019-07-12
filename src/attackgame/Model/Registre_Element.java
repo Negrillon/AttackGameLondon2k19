@@ -28,7 +28,9 @@ public class Registre_Element {
     public void remplirList()
     {
         Element chat = new Cat(0,0);
+        Element chien = new Dog(4,4);
         listElements.add(chat);
+        listElements.add(chien);
         
     }
     
@@ -37,9 +39,19 @@ public class Registre_Element {
         for(int i = 0 ; i < this.listElements.size() ; i++)
         {
             this.listElements.get(i).move_up();
-            map.remplirMap(this.listElements);
-            map.drawMap(map.getMap());
         }
+        for(int i = 0 ; i < this.listElements.size() ; i++)
+        {
+            for(int j = 0 ; j < this.listElements.size() ; j++)
+            {
+                if(collision( this.listElements.get(i), this.listElements.get(j)) && i != j)
+                {
+                    System.out.println("hey");
+                }
+            }
+        }
+        map.remplirMap(this.listElements);
+        map.drawMap(map.getMap());
     }
     
     public void moveAll_down(Map map)
@@ -47,9 +59,19 @@ public class Registre_Element {
         for(int i = 0 ; i < this.listElements.size() ; i++)
         {
             this.listElements.get(i).move_down();
-            map.remplirMap(this.listElements);
-            map.drawMap(map.getMap());
         } 
+        for(int i = 0 ; i < this.listElements.size() ; i++)
+        {
+            for(int j = 0 ; j < this.listElements.size() ; j++)
+            {
+                if(collision( this.listElements.get(i), this.listElements.get(j)) && i != j)
+                {
+                    System.out.println("hey");
+                }
+            }
+        }
+        map.remplirMap(this.listElements);
+        map.drawMap(map.getMap());
     }
     
     public void moveAll_left(Map map)
@@ -57,9 +79,19 @@ public class Registre_Element {
         for(int i = 0 ; i < this.listElements.size() ; i++)
         {
             this.listElements.get(i).move_left();
-            map.remplirMap(this.listElements);
-            map.drawMap(map.getMap());
         } 
+        for(int i = 0 ; i < this.listElements.size() ; i++)
+        {
+            for(int j = 0 ; j < this.listElements.size() ; j++)
+            {
+                if(collision( this.listElements.get(i), this.listElements.get(j)) && i != j)
+                {
+                    System.out.println("hey");
+                }
+            }
+        }
+        map.remplirMap(this.listElements);
+        map.drawMap(map.getMap());
     }
     
     public void moveAll_right(Map map)
@@ -67,9 +99,32 @@ public class Registre_Element {
         for(int i = 0 ; i < this.listElements.size() ; i++)
         {
             this.listElements.get(i).move_right();
-            map.remplirMap(this.listElements);
-            map.drawMap(map.getMap());
-        } 
+        }
+        for(int i = 0 ; i < this.listElements.size() ; i++)
+        {
+            for(int j = 0 ; j < this.listElements.size() ; j++)
+            {
+                if(collision( this.listElements.get(i), this.listElements.get(j)) && i != j)
+                {
+                    if (this.listElements.get(i).attack(this.listElements.get(j)))
+                    {
+                        this.listElements.remove(i);
+                    }
+                    else this.listElements.remove(j);
+                }
+            }
+        }
+        map.remplirMap(this.listElements);
+        map.drawMap(map.getMap());        
+    }
+
+    public boolean collision(Element e1, Element e2)
+    {
+        if(e1.posx==e2.posx && e1.posy==e2.posy)
+        {
+            return true;
+        }
+        else return false;
     }
 
 
