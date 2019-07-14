@@ -8,6 +8,8 @@ package attackgame.View;
 import attackgame.Controller.MenuController;
 import attackgame.Model.Element;
 import attackgame.Model.Map;
+import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -24,6 +26,9 @@ public class MenuView extends javax.swing.JFrame {
         for (int i = 5; i <= 200; i += 5) {
             choiceRow.addItem(i);
             choiceColumn.addItem(i);
+        }
+        for (int i = 1; i <= 4; i++) {
+            choiceSpecies.addItem(i);
         }
     }
 
@@ -45,6 +50,8 @@ public class MenuView extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         choiceRow = new javax.swing.JComboBox<>();
         choiceColumn = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        choiceSpecies = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,6 +89,8 @@ public class MenuView extends javax.swing.JFrame {
 
         jLabel3.setText("x");
 
+        jLabel4.setText("Species");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -90,7 +99,7 @@ public class MenuView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(144, 144, 144)
-                        .addComponent(play, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(play, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -100,20 +109,26 @@ public class MenuView extends javax.swing.JFrame {
                                 .addComponent(level2)))))
                 .addGap(181, 181, 181))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(110, 110, 110)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(124, 124, 124)
-                            .addComponent(choiceRow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jLabel3)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(choiceColumn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(150, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(110, 110, 110)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(124, 124, 124)
+                                .addComponent(choiceRow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(choiceColumn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(96, 96, 96)
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addComponent(choiceSpecies, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,7 +140,11 @@ public class MenuView extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(choiceColumn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(choiceRow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(57, 57, 57)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(choiceSpecies, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(level1)
@@ -145,38 +164,61 @@ public class MenuView extends javax.swing.JFrame {
 
     private void playActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playActionPerformed
         // TODO add your handling code here:
-        Map.getInstance().setMap(new int[choiceRow.getItemAt(choiceRow.getSelectedIndex())][choiceColumn.getItemAt(choiceColumn.getSelectedIndex())]);
-        //Map.getInstance().initialisationMapTest(Map.getInstance().getMap());
-        System.out.println(MenuController.getInstance().isPlay());
-        MenuController.getInstance().setPlay(true);
-        System.out.println(MenuController.getInstance().isPlay());
-        MenuController.getInstance().Play();
-        //Récupérer les valeurs pour la map
-        //Initiliasation de la map 
-        //Map mapModel = new Map();
-        
-        //mapModel.setMap(new int[choiceRow.getItemAt(choiceRow.getSelectedIndex())][choiceColumn.getItemAt(choiceColumn.getSelectedIndex())]);
-        //System.out.println(Map.getInstance().getMap().length);
-        //System.out.println(Map.getInstance().getMap()[1].length);
-        //System.out.println(choiceRow.getItemAt(choiceRow.getSelectedIndex()));
+        switch (MenuController.getLvlChoose()) {
+            case 0:
+                JOptionPane.showMessageDialog(null, "Please, select a level.");
+                break;
+            case 1:
+                //Initialisation de la map Peut être à faire dans une méthode dans le controller
+                Map.getInstance().setMap(new int[choiceRow.getItemAt(choiceRow.getSelectedIndex())][choiceColumn.getItemAt(choiceColumn.getSelectedIndex())]);
+                MenuController.setNbSpecies(choiceSpecies.getItemAt(choiceSpecies.getSelectedIndex()));
+                System.out.println("Nombre d'espèces : " + MenuController.getNbSpecies());
+                System.out.println(MenuController.getInstance().isPlay());
+                MenuController.getInstance().setPlay(true);
+                System.out.println(MenuController.getInstance().isPlay());
+                MenuController.getInstance().Play();
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            default:
+                break;
+        }
+
     }//GEN-LAST:event_playActionPerformed
 
     private void level1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_level1ActionPerformed
         // TODO add your handling code here:
         MenuController.getInstance().setLvlChoose(1);
-        System.out.println(MenuController.getInstance().getLvlChoose());
+
+        level1.setForeground(Color.red);
+        level2.setForeground(Color.black);
+        level3.setForeground(Color.black);
+
+        System.out.println(MenuController.getLvlChoose());
     }//GEN-LAST:event_level1ActionPerformed
 
     private void level2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_level2ActionPerformed
         // TODO add your handling code here:
         MenuController.getInstance().setLvlChoose(2);
+
+        level1.setForeground(Color.black);
+        level2.setForeground(Color.red);
+        level3.setForeground(Color.black);
+
         System.out.println(MenuController.getInstance().getLvlChoose());
     }//GEN-LAST:event_level2ActionPerformed
 
     private void level3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_level3ActionPerformed
         // TODO add your handling code here:
         MenuController.getInstance().setLvlChoose(3);
-        System.out.println(MenuController.getInstance().getLvlChoose());
+
+        level1.setForeground(Color.black);
+        level2.setForeground(Color.black);
+        level3.setForeground(Color.red);
+
+        System.out.println(MenuController.getLvlChoose());
     }//GEN-LAST:event_level3ActionPerformed
 
     /**
@@ -220,9 +262,11 @@ public class MenuView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JComboBox<Integer> choiceColumn;
     public javax.swing.JComboBox<Integer> choiceRow;
+    public javax.swing.JComboBox<Integer> choiceSpecies;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     public javax.swing.JButton level1;
     public javax.swing.JButton level2;
     public javax.swing.JButton level3;

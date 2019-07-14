@@ -22,13 +22,18 @@ public class GameTest extends javax.swing.JFrame {
     
     public GameTest() {
         initComponents();
-        this.setTitle("Game");
-        JPanel jpanel = new JPanel();
-        jpanel.add(gamePanel);
-        this.add(jpanel);
         
-        jpanel.setSize(getWidth(), getHeight()); //resizable
-        //jpanel.setBackground(Color.red);
+        //getContentPane().add(new GamePanel(Map.getInstance().getMap()));
+        this.setContentPane(gamePanel);
+        this.setTitle("GameTEST");
+        setVisible(true);
+        
+//        JPanel jpanel = new JPanel();
+//        jpanel.add(gamePanel);
+//        this.add(jpanel);
+//        
+//        jpanel.setSize(getWidth(), getHeight()); //resizable
+//        //jpanel.setBackground(Color.red);
         
         
         

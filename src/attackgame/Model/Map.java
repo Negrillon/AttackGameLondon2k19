@@ -15,7 +15,7 @@ import attackgame.View.Game;
 public class Map {
 
     private static Map mapInstance = null;
-    private static int[][] map;
+    public static int[][] map;
 
     public int[][] getMap() {
         return map;
