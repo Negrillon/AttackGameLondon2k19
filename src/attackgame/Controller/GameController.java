@@ -11,6 +11,7 @@ import attackgame.Model.Registre_Element;
 //=======
 import attackgame.Model.Cat;
 import attackgame.Model.Map;
+import attackgame.View.ControlFrame;
 //>>>>>>> b51fc55d7680903728635976eb3b0b50a43dc5b8
 import attackgame.View.Game;
 import attackgame.View.GameTest;
@@ -25,12 +26,14 @@ public class GameController {
     private static GameController gameControllerInstance = null;
     private static Game game = new Game();
     private static GameTest gameTest = new GameTest();
+    private static ControlFrame controlFrame = new ControlFrame();
 
     public GameController() {
         //game = new Game();
         //game.setVisible(true);
-        game = new Game();
-        game.setVisible(true);
+        //gameTest = new GameTest();
+        gameTest.setVisible(true);
+        controlFrame.setVisible(true);
         
 //<<<<<<< HEAD
         Registre_Element.getInstance().remplirList();
