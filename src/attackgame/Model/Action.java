@@ -83,21 +83,42 @@ public class Action{
                 break;
             case 1:
                 a2.attack = "Bite";
+                break;
             case 2:
                 a2.attack = "Scratch";
+                break;
         }
         
         if ("Roar".equals(a1.attack) && "Scratch".equals(a2.attack) || "Bite".equals(a1.attack) && "Roar".equals(a2.attack) || "Scratch".equals(a1.attack) && "Bite".equals(a2.attack))
         {
-            return true;
+            System.out.println("The "+a1.name+" use "+a1.attack);
+            System.out.println("The "+a2.name+" use "+a2.attack);
+            System.out.println("The "+a1.name+" kill the "+a2.name);
+            return false;
         }
         else if("Roar".equals(a2.attack) && "Scratch".equals(a1.attack)|| "Bite".equals(a2.attack) && "Roar".equals(a1.attack) || "Scratch".equals(a2.attack) && "Bite".equals(a1.attack))
         {
-             return false;       
+            System.out.println("The "+a1.name+" use "+a1.attack);
+            System.out.println("The "+a2.name+" use "+a2.attack);
+            System.out.println("The "+a2.name+" kill the "+a1.name);
+            return true;       
         }
-        else ;
+        a = rand.nextInt(2);
+        switch (a)
+        {
+            case 0:
+                System.out.println("The "+a1.name+" use "+a1.attack);
+                System.out.println("The "+a2.name+" use "+a2.attack);
+                System.out.println("The "+a1.name+" kill the "+a2.name);
+                return false;               
+            case 1:
+                System.out.println("The "+a1.name+" use "+a1.attack);
+                System.out.println("The "+a2.name+" use "+a2.attack);
+                System.out.println("The "+a2.name+" kill the "+a1.name);
+                return true;    
+        }
         return false;
-        
+
         
     }
 

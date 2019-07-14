@@ -46,7 +46,11 @@ public class Registre_Element {
             {
                 if(collision( this.listElements.get(i), this.listElements.get(j)) && i != j)
                 {
-                    System.out.println("hey");
+                    if (this.listElements.get(i).attack(this.listElements.get(j)))
+                    {
+                        this.listElements.remove(j);
+                    }
+                    else this.listElements.remove(i);
                 }
             }
         }
@@ -66,7 +70,11 @@ public class Registre_Element {
             {
                 if(collision( this.listElements.get(i), this.listElements.get(j)) && i != j)
                 {
-                    System.out.println("hey");
+                    if (this.listElements.get(i).attack(this.listElements.get(j)))
+                    {
+                        this.listElements.remove(i);
+                    }
+                    else this.listElements.remove(j);
                 }
             }
         }
@@ -86,7 +94,11 @@ public class Registre_Element {
             {
                 if(collision( this.listElements.get(i), this.listElements.get(j)) && i != j)
                 {
-                    System.out.println("hey");
+                    if (this.listElements.get(i).attack(this.listElements.get(j)))
+                    {
+                        this.listElements.remove(i);
+                    }
+                    else this.listElements.remove(j);
                 }
             }
         }
