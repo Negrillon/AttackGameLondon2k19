@@ -31,6 +31,7 @@ public class GameTest extends javax.swing.JFrame {
         this.setResizable(true);
         this.setTitle("GameTEST");
         setVisible(true);
+        this.setLocationRelativeTo(null);
         this.setSize(this.getWidth(), this.getHeight());
         System.out.println("width écran: "+this.getWidth() +" height :"+this.getHeight());
         chatArea.append("coucou\n");

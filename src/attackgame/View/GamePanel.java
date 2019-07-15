@@ -18,7 +18,13 @@ import javax.swing.JPanel;
 public class GamePanel extends JPanel {
 
     private int[][] map;
-    ImageIcon image0 = new ImageIcon("./src/Ressources/cat.png");
+    ImageIcon ground = new ImageIcon("./src/Ressources/ground.png");
+    ImageIcon cat = new ImageIcon("./src/Ressources/cat.png");
+    ImageIcon dog = new ImageIcon("./src/Ressources/dog.png");
+    ImageIcon wolf = new ImageIcon("./src/Ressources/wolf.png");
+    ImageIcon cow = new ImageIcon("./src/Ressources/cow.png");
+    ImageIcon chicken = new ImageIcon("./src/Ressources/chicken.png");
+    ImageIcon herb = new ImageIcon("./src/Ressources/herb.png");
 
     public GamePanel(int[][] mapLoad) {
         this.map = mapLoad;
@@ -31,18 +37,18 @@ public class GamePanel extends JPanel {
         System.out.println("paint component");
         System.out.println("WIDTH :"+this.getWidth() + "   HEIGHT:" + this.getHeight());
 
-        for (int i = 0; i < Map.getInstance().getMap().length; i++) {
-            for (int j = 0; j < Map.getInstance().getMap()[0].length; j++) {
-                switch (Map.getInstance().getMap()[i][j]) {
+        for (int i = 0; i < map.length; i++) {
+            for (int j = 0; j < map[0].length; j++) {
+                switch (map[i][j]) {
                     case 0:
-                        g.drawImage(image0.getImage(), 25*j, 25*i, null);
+                        g.drawImage(ground.getImage(), 25*j, 25*i, null);
                         break;
-//                    case 1:
-//                        graphics.drawImage(image1.getImage(), j * 20, i * 20, null);
-//                        break;
-//                    case 2:
-//                        graphics.drawImage(image2.getImage(), j * 20, i * 20, null);
-//                        break;
+                    case 1:
+                        g.drawImage(cat.getImage(), j * 25, i * 25, null);
+                        break;
+                    case 2:
+                        g.drawImage(dog.getImage(), j * 25, i * 25, null);
+                        break;
 //                    case 3:
 //                        graphics.drawImage(image3.getImage(), j * 20, i * 20, null);
 //                        break;

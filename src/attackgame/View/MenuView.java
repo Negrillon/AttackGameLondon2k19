@@ -34,10 +34,12 @@ public class MenuView extends javax.swing.JFrame {
             choiceColumn.addItem(i);
         }
         for (int i = 1; i <= (choiceRow.getItemAt(choiceRow.getSelectedIndex()) * choiceColumn.getItemAt(choiceColumn.getSelectedIndex())) / 4; i++) {
-            choiceSpecies.addItem(i);
+            choiceAnimals.addItem(i);
         }
         //To block the event ActionPerformed for choiceRow and choice Column
         flag = true;
+        this.setLocationRelativeTo(null);
+        this.setVisible(true);
     }
 
     /**
@@ -59,7 +61,7 @@ public class MenuView extends javax.swing.JFrame {
         choiceRow = new javax.swing.JComboBox<>();
         choiceColumn = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
-        choiceSpecies = new javax.swing.JComboBox<>();
+        choiceAnimals = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -139,9 +141,9 @@ public class MenuView extends javax.swing.JFrame {
 
         jLabel4.setText("# of Animal");
 
-        choiceSpecies.addItemListener(new java.awt.event.ItemListener() {
+        choiceAnimals.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                choiceSpeciesItemStateChanged(evt);
+                choiceAnimalsItemStateChanged(evt);
             }
         });
 
@@ -181,7 +183,7 @@ public class MenuView extends javax.swing.JFrame {
                         .addGap(96, 96, 96)
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
-                        .addComponent(choiceSpecies, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(choiceAnimals, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -196,7 +198,7 @@ public class MenuView extends javax.swing.JFrame {
                     .addComponent(choiceRow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(choiceSpecies, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(choiceAnimals, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
@@ -225,8 +227,8 @@ public class MenuView extends javax.swing.JFrame {
             case 1:
                 //Initialisation de la map Peut être à faire dans une méthode dans le controller
                 Map.getInstance().setMap(new int[choiceRow.getItemAt(choiceRow.getSelectedIndex())][choiceColumn.getItemAt(choiceColumn.getSelectedIndex())]);
-                MenuController.setNbSpecies(choiceSpecies.getItemAt(choiceSpecies.getSelectedIndex()));
-                System.out.println("Nombre d'espèces : " + MenuController.getNbSpecies());
+                MenuController.setNbAnimal(choiceAnimals.getItemAt(choiceAnimals.getSelectedIndex()));
+                System.out.println("Nombre d'animaux : " + MenuController.getNbAnimal());
                 System.out.println(MenuController.getInstance().isPlay());
                 MenuController.getInstance().setPlay(true);
                 System.out.println(MenuController.getInstance().isPlay());
@@ -280,10 +282,10 @@ public class MenuView extends javax.swing.JFrame {
         if (flag) {
             nbMaxAnimal = (choiceRow.getItemAt(choiceRow.getSelectedIndex()) * choiceColumn.getItemAt(choiceColumn.getSelectedIndex())) / 4;
             for (int i = 1; i <= nbMaxAnimal; i++) {
-                choiceSpecies.removeItem(i);
+                choiceAnimals.removeItem(i);
             }
             for (int i = 1; i <= nbMaxAnimal; i++) {
-                choiceSpecies.addItem(i);
+                choiceAnimals.addItem(i);
 
             }
         }
@@ -294,10 +296,10 @@ public class MenuView extends javax.swing.JFrame {
         if (flag) {
             nbMaxAnimal = (choiceRow.getItemAt(choiceRow.getSelectedIndex()) * choiceColumn.getItemAt(choiceColumn.getSelectedIndex())) / 4;
             for (int i = 1; i <= nbMaxAnimal; i++) {
-                choiceSpecies.removeItem(i);
+                choiceAnimals.removeItem(i);
             }
             for (int i = 1; i <= nbMaxAnimal; i++) {
-                choiceSpecies.addItem(i);
+                choiceAnimals.addItem(i);
 
             }
         }
@@ -315,9 +317,9 @@ public class MenuView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_choiceRowItemStateChanged
 
-    private void choiceSpeciesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_choiceSpeciesItemStateChanged
+    private void choiceAnimalsItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_choiceAnimalsItemStateChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_choiceSpeciesItemStateChanged
+    }//GEN-LAST:event_choiceAnimalsItemStateChanged
 
     private void choiceRowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_choiceRowMouseClicked
         // TODO add your handling code here:
@@ -378,9 +380,9 @@ public class MenuView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JComboBox<Integer> choiceAnimals;
     public javax.swing.JComboBox<Integer> choiceColumn;
     public javax.swing.JComboBox<Integer> choiceRow;
-    public javax.swing.JComboBox<Integer> choiceSpecies;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

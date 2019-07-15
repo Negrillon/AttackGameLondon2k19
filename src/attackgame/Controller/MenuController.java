@@ -5,7 +5,6 @@
  */
 package attackgame.Controller;
 
-import static attackgame.Controller.AttackGame.menu;
 import attackgame.Model.Map;
 import attackgame.View.MenuView;
 import attackgame.View.MenuTest;
@@ -18,18 +17,18 @@ import java.awt.Color;
 public class MenuController {
 
     private static MenuController menuControllerInstance = null;
-    private static MenuView menuView = new MenuView();
+    private static MenuView menuView;
     //private Map mapModel = new Map();
 
-    static int lvlChoose = 0;
-    static int nbSpecies = 0;
-    static int nbRow = 0;
-    static int nbColumn = 0;
-    boolean play = false;
+    private static int lvlChoose = 0;
+    private static int nbAnimal = 0;
+    private static int nbRow = 0;
+    private static int nbColumn = 0;
+    private boolean play = false;
 
     public MenuController() {
-        menu = new MenuView();
-        menu.setVisible(true);
+        menuView = new MenuView();
+       
     }
 
     public static MenuController getInstance() {
@@ -39,12 +38,12 @@ public class MenuController {
         return menuControllerInstance;
     }
 
-    public static int getNbSpecies() {
-        return nbSpecies;
+    public static int getNbAnimal() {
+        return nbAnimal;
     }
 
-    public static void setNbSpecies(int nbSpecies) {
-        MenuController.nbSpecies = nbSpecies;
+    public static void setNbAnimal(int nbSpecies) {
+        MenuController.nbAnimal = nbSpecies;
     }
 
     public static int getLvlChoose() {
@@ -58,7 +57,7 @@ public class MenuController {
     public void Play() {
         System.out.println("Game loading");
         GameController.getInstance();
-        menu.dispose();
+        menuView.dispose();
 //<<<<<<< HEAD
         System.out.println(Map.getInstance().getMap().length);
         System.out.println(Map.getInstance().getMap()[1].length);

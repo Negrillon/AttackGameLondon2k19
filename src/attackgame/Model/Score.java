@@ -12,14 +12,14 @@ package attackgame.Model;
 public class Score {
     
     private static int nbMoves = 0;
-    private static int nbSpecies =0;
+    private static int nbAnimal =0;
 
     public static int getNbSpecies() {
-        return nbSpecies;
+        return nbAnimal;
     }
 
     public static void setNbSpecies(int nbSpecies) {
-        Score.nbSpecies = nbSpecies;
+        Score.nbAnimal = nbSpecies;
     }
 
     public static int getNbMoves() {
