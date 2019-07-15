@@ -18,9 +18,8 @@ public class Cat extends Animal {
     
     public Cat(int posx, int posy) {
         name = "Cat" ;
-        move = 4 ;
-        carnivore = true ;
-        sex = rand.nextInt(2);  
+        move = 5 ;
+        carnivore = true ;  
         this.posx = posx;
         this.posy = posy;
     }
