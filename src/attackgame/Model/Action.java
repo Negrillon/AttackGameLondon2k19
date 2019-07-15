@@ -149,7 +149,6 @@ public class Action{
         
         if (a1.reproduct==true)
         {
-            System.out.println("plante");
             a1.set_sleep(true);
             a1.set_reproduct(false);
             return true;

@@ -54,15 +54,29 @@ public class Map {
     }
 
     public void remplirMap(ArrayList<Element> listElements) {
-        for (int i = 0; i < listElements.size(); i++) {
-
+        for (int i = 0; i < listElements.size(); i++) 
+        {
             int x = listElements.get(i).posx;
             int y = listElements.get(i).posy;
-            if ("Cat".equals(listElements.get(i).name))
+            switch(listElements.get(i).name)
             {
-                Map.getInstance().getMap()[x][y] = 1;
+                case "Cat":
+                    Map.getInstance().getMap()[x][y] = 1;
+                    break;
+                case "Dog":
+                    Map.getInstance().getMap()[x][y] = 2;
+                    break;
+                case "Wolf":
+                    Map.getInstance().getMap()[x][y] = 3;
+                    break;
+                case "Cow":
+                    Map.getInstance().getMap()[x][y] = 4;
+                    break;
+                case "Chicken":
+                    Map.getInstance().getMap()[x][y] = 5;
+                    break;
+                 
             }
-            else Map.getInstance().getMap()[x][y] = 9;
         }
 
     }

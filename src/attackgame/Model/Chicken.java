@@ -5,18 +5,15 @@
  */
 package attackgame.Model;
 
-import java.util.Random;
-
 /**
  *
  * @author Roman
  */
-public class Dog extends Animal{
-        
-    public Dog(int posx, int posy) {
-        name = "Dog" ;
+public class Chicken extends Animal{
+        public Chicken(int posx, int posy) {
+        name = "Chicken" ;
         move = 3 ;
-        carnivore = true ; 
+        carnivore = false ; 
         this.posx = posx;
         this.posy = posy;
     }

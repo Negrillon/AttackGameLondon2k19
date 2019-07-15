@@ -76,16 +76,24 @@ public class GameController {
     {
         switch(choice){
             case 1:
-                registre.moveAll_up(Map.getInstance());
+                registre.moveAll_up();
+                Map.getInstance().remplirMap(Registre_Element.getInstance().listElements);
+                Map.getInstance().drawMap(Map.getInstance().getMap());
                 break;
             case 2:
-                registre.moveAll_down(Map.getInstance());
+                registre.moveAll_down();
+                Map.getInstance().remplirMap(Registre_Element.getInstance().listElements);
+                Map.getInstance().drawMap(Map.getInstance().getMap());
                 break;
             case 3:
-                registre.moveAll_left(Map.getInstance());
+                registre.moveAll_left();
+                Map.getInstance().remplirMap(Registre_Element.getInstance().listElements);
+                Map.getInstance().drawMap(Map.getInstance().getMap());
                 break;
             case 4:
-                registre.moveAll_right(Map.getInstance());
+                registre.moveAll_right();
+                Map.getInstance().remplirMap(Registre_Element.getInstance().listElements);
+                Map.getInstance().drawMap(Map.getInstance().getMap());
                 break;
         }
     }
