@@ -15,6 +15,8 @@ public abstract class Element
     public int posy ; 
     public String name ;
     public String attack;
+    public boolean sleep=false;
+    public boolean reproduct=true;
     
     public void move_up(){}
 
@@ -25,4 +27,10 @@ public abstract class Element
     public void move_right(){}
     
     public boolean attack(Element a2){return false;}
+    
+    public boolean reproduct(){return false;}
+    
+    public void set_reproduct(boolean a){this.reproduct=a;}
+    
+    public void set_sleep(boolean a){this.sleep=a;}
 }

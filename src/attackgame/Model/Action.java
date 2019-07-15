@@ -17,7 +17,13 @@ public class Action{
     
     public void move_up (Animal a1)
     {
-        int a = rand.nextInt(a1.move);
+        int a;
+        if(a1.sleep)
+        {
+            a = 0;
+            a1.set_sleep(false);
+        }
+        else a = rand.nextInt(a1.move);
         Map.getInstance().getMap()[a1.posx][a1.posy] = 0;
         if (a1.posx-a>=0)
         {
@@ -28,7 +34,13 @@ public class Action{
     
     public void move_right (Animal a1)
     {
-        int a = rand.nextInt(a1.move);
+        int a;
+        if(a1.sleep)
+        {
+            a = 0;
+            a1.set_sleep(false);
+        }
+        else a = rand.nextInt(a1.move);
         Map.getInstance().getMap()[a1.posx][a1.posy] = 0;
         if(a1.posy+a<Map.getInstance().getMap()[0].length)
         {    
@@ -39,7 +51,13 @@ public class Action{
     
     public void move_left (Animal a1)
     {
-        int a = rand.nextInt(a1.move);
+        int a;
+        if(a1.sleep)
+        {
+            a = 0;
+            a1.set_sleep(false);
+        }
+        else a = rand.nextInt(a1.move);
         Map.getInstance().getMap()[a1.posx][a1.posy] = 0;
         if (a1.posy-a>=0)
         {
@@ -50,7 +68,13 @@ public class Action{
     
     public void move_down (Animal a1)
     {
-        int a = rand.nextInt(a1.move);
+        int a;
+        if(a1.sleep)
+        {
+            a = 0;
+            a1.set_sleep(false);
+        }
+        else a = rand.nextInt(a1.move);
         Map.getInstance().getMap()[a1.posx][a1.posy] = 0;
         if(a1.posx+a<Map.getInstance().getMap().length)
         {
@@ -117,9 +141,19 @@ public class Action{
                 System.out.println("The "+a2.name+" kill the "+a1.name);
                 return true;    
         }
-        return false;
-
-        
+        return true;
     }
-
+    
+    public boolean reproductible(Animal a1)
+    {
+        
+        if (a1.reproduct==true)
+        {
+            System.out.println("plante");
+            a1.set_sleep(true);
+            a1.set_reproduct(false);
+            return true;
+        }
+        else return false;
+    }
 }

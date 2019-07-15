@@ -15,7 +15,6 @@ public abstract class Animal extends Element {
     Action action = new Action();
     public int move ;
     public boolean carnivore;
-    public String attack;
     
     public void move_down()
     {
@@ -38,6 +37,11 @@ public abstract class Animal extends Element {
     public boolean attack(Element a2)
     {
         return action.attack(this,  a2);
+    }
+    
+    public boolean reproduct()
+    {
+        return action.reproductible(this);
     }
     //Faire un get nb Specie Still Alive
 }
