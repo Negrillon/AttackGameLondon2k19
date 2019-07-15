@@ -27,13 +27,13 @@ public class GameController {
     private static Game game = new Game();
     private static GameTest gameTest = new GameTest();
     private static ControlFrame controlFrame = new ControlFrame();
-
+  
     public GameController() {
         //game = new Game();
         //game.setVisible(true);
         //gameTest = new GameTest();
         gameTest.setVisible(true);
-        controlFrame.setVisible(true);
+        //controlFrame.setVisible(true);
         
 //<<<<<<< HEAD
         Registre_Element.getInstance().remplirList();

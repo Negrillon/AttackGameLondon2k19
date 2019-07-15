@@ -5,9 +5,10 @@
  */
 package attackgame.View;
 
+import attackgame.Controller.GameController;
 import attackgame.Controller.MenuController;
-import attackgame.Model.Element;
 import attackgame.Model.Map;
+import attackgame.Model.Score;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 
@@ -20,16 +21,23 @@ public class MenuView extends javax.swing.JFrame {
     /**
      * Creates new form Menu
      */
+    int nbMaxAnimal = 0;
+    boolean flag = false;
+
     public MenuView() {
         initComponents();
+        System.out.println(Score.getNbMoves());
+
         this.setTitle("Menu");
         for (int i = 5; i <= 200; i += 5) {
             choiceRow.addItem(i);
             choiceColumn.addItem(i);
         }
-        for (int i = 1; i <= 4; i++) {
+        for (int i = 1; i <= (choiceRow.getItemAt(choiceRow.getSelectedIndex()) * choiceColumn.getItemAt(choiceColumn.getSelectedIndex())) / 4; i++) {
             choiceSpecies.addItem(i);
         }
+        //To block the event ActionPerformed for choiceRow and choice Column
+        flag = true;
     }
 
     /**
@@ -89,7 +97,53 @@ public class MenuView extends javax.swing.JFrame {
 
         jLabel3.setText("x");
 
-        jLabel4.setText("Species");
+        choiceRow.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                choiceRowItemStateChanged(evt);
+            }
+        });
+        choiceRow.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                choiceRowMouseReleased(evt);
+            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                choiceRowMouseClicked(evt);
+            }
+        });
+        choiceRow.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                choiceRowActionPerformed(evt);
+            }
+        });
+
+        choiceColumn.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                choiceColumnItemStateChanged(evt);
+            }
+        });
+        choiceColumn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                choiceColumnMouseReleased(evt);
+            }
+        });
+        choiceColumn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                choiceColumnActionPerformed(evt);
+            }
+        });
+        choiceColumn.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                choiceColumnKeyPressed(evt);
+            }
+        });
+
+        jLabel4.setText("# of Animal");
+
+        choiceSpecies.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                choiceSpeciesItemStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -182,8 +236,6 @@ public class MenuView extends javax.swing.JFrame {
                 break;
             case 3:
                 break;
-            default:
-                break;
         }
 
     }//GEN-LAST:event_playActionPerformed
@@ -191,6 +243,8 @@ public class MenuView extends javax.swing.JFrame {
     private void level1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_level1ActionPerformed
         // TODO add your handling code here:
         MenuController.getInstance().setLvlChoose(1);
+        //System.out.println(GameController.getNbMoves());
+        System.out.println(Score.getNbMoves());
 
         level1.setForeground(Color.red);
         level2.setForeground(Color.black);
@@ -221,6 +275,62 @@ public class MenuView extends javax.swing.JFrame {
         System.out.println(MenuController.getLvlChoose());
     }//GEN-LAST:event_level3ActionPerformed
 
+    private void choiceRowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_choiceRowActionPerformed
+        // TODO add your handling code here:
+        if (flag) {
+            nbMaxAnimal = (choiceRow.getItemAt(choiceRow.getSelectedIndex()) * choiceColumn.getItemAt(choiceColumn.getSelectedIndex())) / 4;
+            for (int i = 1; i <= nbMaxAnimal; i++) {
+                choiceSpecies.removeItem(i);
+            }
+            for (int i = 1; i <= nbMaxAnimal; i++) {
+                choiceSpecies.addItem(i);
+
+            }
+        }
+    }//GEN-LAST:event_choiceRowActionPerformed
+
+    private void choiceColumnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_choiceColumnActionPerformed
+        // TODO add your handling code here:
+        if (flag) {
+            nbMaxAnimal = (choiceRow.getItemAt(choiceRow.getSelectedIndex()) * choiceColumn.getItemAt(choiceColumn.getSelectedIndex())) / 4;
+            for (int i = 1; i <= nbMaxAnimal; i++) {
+                choiceSpecies.removeItem(i);
+            }
+            for (int i = 1; i <= nbMaxAnimal; i++) {
+                choiceSpecies.addItem(i);
+
+            }
+        }
+    }//GEN-LAST:event_choiceColumnActionPerformed
+
+    private void choiceColumnItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_choiceColumnItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_choiceColumnItemStateChanged
+
+    private void choiceColumnKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_choiceColumnKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_choiceColumnKeyPressed
+
+    private void choiceRowItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_choiceRowItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_choiceRowItemStateChanged
+
+    private void choiceSpeciesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_choiceSpeciesItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_choiceSpeciesItemStateChanged
+
+    private void choiceRowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_choiceRowMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_choiceRowMouseClicked
+
+    private void choiceColumnMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_choiceColumnMouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_choiceColumnMouseReleased
+
+    private void choiceRowMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_choiceRowMouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_choiceRowMouseReleased
+
     /**
      * @param args the command line arguments
      */
@@ -235,16 +345,24 @@ public class MenuView extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MenuView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuView.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MenuView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuView.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MenuView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuView.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MenuView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuView.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>

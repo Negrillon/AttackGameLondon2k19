@@ -29,13 +29,13 @@ public class GamePanel extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
         System.out.println("paint component");
+        System.out.println("WIDTH :"+this.getWidth() + "   HEIGHT:" + this.getHeight());
 
         for (int i = 0; i < Map.getInstance().getMap().length; i++) {
             for (int j = 0; j < Map.getInstance().getMap()[0].length; j++) {
                 switch (Map.getInstance().getMap()[i][j]) {
                     case 0:
-                        g.drawImage(image0.getImage(), j, i, null);
-                        System.out.println("OK");
+                        g.drawImage(image0.getImage(), 25*j, 25*i, null);
                         break;
 //                    case 1:
 //                        graphics.drawImage(image1.getImage(), j * 20, i * 20, null);

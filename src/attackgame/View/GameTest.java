@@ -5,9 +5,10 @@
  */
 package attackgame.View;
 
+import attackgame.Controller.GameController;
 import attackgame.Model.Map;
-import java.awt.Color;
-import javax.swing.JPanel;
+import attackgame.Model.Registre_Element;
+import attackgame.Model.Score;
 
 /**
  *
@@ -19,24 +20,28 @@ public class GameTest extends javax.swing.JFrame {
      * Creates new form GameTest
      */
     GamePanel gamePanel = new GamePanel(Map.getInstance().getMap());
-    
+
     public GameTest() {
         initComponents();
-        
+
         //getContentPane().add(new GamePanel(Map.getInstance().getMap()));
-        this.setContentPane(gamePanel);
+        //this.setContentPane(gamePanel);
+        jInternalFrame.setSize(25*Map.getInstance().getMap().length, 25*Map.getInstance().getMap()[0].length);
+        jInternalFrame.setContentPane(gamePanel);
+        this.setResizable(true);
         this.setTitle("GameTEST");
         setVisible(true);
+        this.setSize(this.getWidth(), this.getHeight());
+        System.out.println("width écran: "+this.getWidth() +" height :"+this.getHeight());
+        chatArea.append("coucou\n");
         
+
 //        JPanel jpanel = new JPanel();
 //        jpanel.add(gamePanel);
 //        this.add(jpanel);
 //        
 //        jpanel.setSize(getWidth(), getHeight()); //resizable
 //        //jpanel.setBackground(Color.red);
-        
-        
-        
     }
 
     /**
@@ -48,21 +53,165 @@ public class GameTest extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jInternalFrame = new javax.swing.JInternalFrame();
+        up = new javax.swing.JButton();
+        left = new javax.swing.JButton();
+        down = new javax.swing.JButton();
+        right = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        chatArea = new javax.swing.JTextArea();
+        panel1 = new java.awt.Panel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(641, 437));
+
+        jInternalFrame.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jInternalFrame.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        jInternalFrame.setMinimumSize(new java.awt.Dimension(420, 318));
+        jInternalFrame.setSize(new java.awt.Dimension(420, 318));
+        jInternalFrame.setVisible(true);
+
+        javax.swing.GroupLayout jInternalFrameLayout = new javax.swing.GroupLayout(jInternalFrame.getContentPane());
+        jInternalFrame.getContentPane().setLayout(jInternalFrameLayout);
+        jInternalFrameLayout.setHorizontalGroup(
+            jInternalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jInternalFrameLayout.setVerticalGroup(
+            jInternalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        up.setText("UP");
+        up.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                upActionPerformed(evt);
+            }
+        });
+
+        left.setText("LEFT");
+        left.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                leftActionPerformed(evt);
+            }
+        });
+
+        down.setText("DOWN");
+        down.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                downActionPerformed(evt);
+            }
+        });
+
+        right.setText("RIGHT");
+        right.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rightActionPerformed(evt);
+            }
+        });
+
+        chatArea.setEditable(false);
+        chatArea.setColumns(17);
+        chatArea.setRows(5);
+        jScrollPane2.setViewportView(chatArea);
+
+        javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);
+        panel1.setLayout(panel1Layout);
+        panel1Layout.setHorizontalGroup(
+            panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        panel1Layout.setVerticalGroup(
+            panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 162, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jInternalFrame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addComponent(left, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(up, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(down, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(right, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(95, 95, 95)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+                    .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jInternalFrame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(up, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(right, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(left, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(down, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(20, 20, 20))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void upActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upActionPerformed
+        // TODO add your handling code here:
+        Score.setNbMoves(Score.getNbMoves() + 1);
+        int choice = 1;
+        GameController.getInstance().moveController(choice, Registre_Element.getInstance());
+        chatArea.append("coucou\n");
+        repaint();
+        revalidate();
+    }//GEN-LAST:event_upActionPerformed
+
+    private void leftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leftActionPerformed
+        // TODO add your handling code here:
+        Score.setNbMoves(Score.getNbMoves() + 1);
+        int choice = 3;
+        GameController.getInstance().moveController(choice, Registre_Element.getInstance());
+        repaint();
+        revalidate();
+    }//GEN-LAST:event_leftActionPerformed
+
+    private void downActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_downActionPerformed
+        // TODO add your handling code here:
+        Score.setNbMoves(Score.getNbMoves() + 1);
+        int choice = 2;
+        GameController.getInstance().moveController(choice, Registre_Element.getInstance());
+        repaint();
+        revalidate();
+    }//GEN-LAST:event_downActionPerformed
+
+    private void rightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rightActionPerformed
+        // TODO add your handling code here:
+        Score.setNbMoves(Score.getNbMoves() + 1);
+        int choice = 4;
+        GameController.getInstance().moveController(choice, Registre_Element.getInstance());
+        System.out.println("Width :" + this.getWidth() + " Height :" + this.getHeight());
+        repaint();
+        revalidate();
+        chatArea.append("Nb de coup :" + Score.getNbMoves());
+    }//GEN-LAST:event_rightActionPerformed
 
     /**
      * @param args the command line arguments
@@ -100,5 +249,13 @@ public class GameTest extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea chatArea;
+    private javax.swing.JButton down;
+    private javax.swing.JInternalFrame jInternalFrame;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JButton left;
+    private java.awt.Panel panel1;
+    private javax.swing.JButton right;
+    private javax.swing.JButton up;
     // End of variables declaration//GEN-END:variables
 }
