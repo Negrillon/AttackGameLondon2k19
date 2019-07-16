@@ -25,6 +25,7 @@ public class GamePanel extends JPanel {
     ImageIcon cow = new ImageIcon("./src/Ressources/cow.png");
     ImageIcon chicken = new ImageIcon("./src/Ressources/chicken.png");
     ImageIcon herb = new ImageIcon("./src/Ressources/herb.png");
+    ImageIcon tree = new ImageIcon("./src/Ressources/tree.png");
 
     public GamePanel(int[][] mapLoad) {
         this.map = mapLoad;
@@ -53,16 +54,16 @@ public class GamePanel extends JPanel {
                         g.drawImage(wolf.getImage(), 25 * j, 25 * i, null);
                         break;
                         case 4:
-                        g.drawImage(wolf.getImage(), 25 * j, 25 * i, null);
+                        g.drawImage(cow.getImage(), 25 * j, 25 * i, null);
                         break;
                     case 5:
-                        g.drawImage(cow.getImage(), j * 25, i * 25, null);
-                        break;
-                    case 6:
                         g.drawImage(chicken.getImage(), j * 25, i * 25, null);
                         break;
-                    case 7:
+                    case 6:
                         g.drawImage(herb.getImage(), j * 25, i * 25, null);
+                        break;
+                    case 7:
+                        g.drawImage(tree.getImage(), j * 25, i * 25, null);
                         break;
                 }
             }

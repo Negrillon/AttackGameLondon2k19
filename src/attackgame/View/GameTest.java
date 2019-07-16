@@ -25,19 +25,21 @@ public class GameTest extends javax.swing.JFrame {
 
     public GameTest() {
         initComponents();
-
+        jLabel2.setText(String.valueOf(Score.getNbMoves()));
         //getContentPane().add(new GamePanel(Map.getInstance().getMap()));
         //this.setContentPane(gamePanel);
-        jInternalFrame.setSize(25*Map.getInstance().getMap().length, 25*Map.getInstance().getMap()[0].length);
+        jInternalFrame.setSize(25 * Map.getInstance().getMap().length, 25 * Map.getInstance().getMap()[0].length);
         jInternalFrame.setContentPane(gamePanel);
         this.setResizable(true);
         this.setTitle("GameTEST");
         setVisible(true);
         this.setLocationRelativeTo(null);
         this.setSize(this.getWidth(), this.getHeight());
-        System.out.println("width écran: "+this.getWidth() +" height :"+this.getHeight());
-        chatArea.append("coucou\n");
-        
+        System.out.println("width écran: " + this.getWidth() + " height :" + this.getHeight());
+        //chatArea.append("coucou\n");
+        if (Registre_Element.getInstance().countSpecies()) {
+            JOptionPane.showMessageDialog(null, "Game finished ! Well played !");
+        }
 
 //        JPanel jpanel = new JPanel();
 //        jpanel.add(gamePanel);
@@ -64,6 +66,8 @@ public class GameTest extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         chatArea = new javax.swing.JTextArea();
         panel1 = new java.awt.Panel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -118,15 +122,29 @@ public class GameTest extends javax.swing.JFrame {
         chatArea.setRows(5);
         jScrollPane2.setViewportView(chatArea);
 
+        jLabel1.setText("Number of moves :");
+
+        jLabel2.setText("jLabel2");
+
         javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);
         panel1.setLayout(panel1Layout);
         panel1Layout.setHorizontalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(panel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panel1Layout.setVerticalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 148, Short.MAX_VALUE)
+            .addGroup(panel1Layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addContainerGap(98, Short.MAX_VALUE))
         );
 
         jButton1.setText("Save");
@@ -197,9 +215,13 @@ public class GameTest extends javax.swing.JFrame {
         Score.setNbMoves(Score.getNbMoves() + 1);
         int choice = 1;
         GameController.getInstance().moveController(choice, Registre_Element.getInstance());
-        chatArea.append("coucou\n");
+        // chatArea.append("coucou\n");
         repaint();
         revalidate();
+        jLabel2.setText(String.valueOf(Score.getNbMoves()));
+        if (Registre_Element.getInstance().countSpecies()) {
+            JOptionPane.showMessageDialog(null, "Game finished ! Well played !");
+        }
     }//GEN-LAST:event_upActionPerformed
 
     private void leftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leftActionPerformed
@@ -209,6 +231,10 @@ public class GameTest extends javax.swing.JFrame {
         GameController.getInstance().moveController(choice, Registre_Element.getInstance());
         repaint();
         revalidate();
+        jLabel2.setText(String.valueOf(Score.getNbMoves()));
+        if (Registre_Element.getInstance().countSpecies()) {
+            JOptionPane.showMessageDialog(null, "Game finished ! Well played !");
+        }
     }//GEN-LAST:event_leftActionPerformed
 
     private void downActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_downActionPerformed
@@ -218,6 +244,10 @@ public class GameTest extends javax.swing.JFrame {
         GameController.getInstance().moveController(choice, Registre_Element.getInstance());
         repaint();
         revalidate();
+        jLabel2.setText(String.valueOf(Score.getNbMoves()));
+        if (Registre_Element.getInstance().countSpecies()) {
+            JOptionPane.showMessageDialog(null, "Game finished ! Well played !");
+        }
     }//GEN-LAST:event_downActionPerformed
 
     private void rightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rightActionPerformed
@@ -228,14 +258,21 @@ public class GameTest extends javax.swing.JFrame {
         System.out.println("Width :" + this.getWidth() + " Height :" + this.getHeight());
         repaint();
         revalidate();
-        chatArea.append("Nb de coup :" + Score.getNbMoves());
+        jLabel2.setText(String.valueOf(Score.getNbMoves()));
+        if (Score.getNbMoves()==Score.getNbMoves()%5 ) {
+            chatArea.append("Numbers of moves : "+ Score.getNbMoves() +"\n");
+        }
+        //chatArea.append("Nb de coup :" + Score.getNbMoves());
+        if (Registre_Element.getInstance().countSpecies()) {
+            JOptionPane.showMessageDialog(null, "Game finished ! Well played !");
+        }
     }//GEN-LAST:event_rightActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         Save.createFile();
         Save.writeFile();
-       // JOptionPane.showMessageDialog(null, "The game has been saved well.", "Save", INFORMATION_MESSAGE);
+        // JOptionPane.showMessageDialog(null, "The game has been saved well.", "Save", INFORMATION_MESSAGE);
         JOptionPane.showMessageDialog(null, "The game has been saved well.");
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -279,6 +316,8 @@ public class GameTest extends javax.swing.JFrame {
     private javax.swing.JButton down;
     private javax.swing.JButton jButton1;
     private javax.swing.JInternalFrame jInternalFrame;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton left;
     private java.awt.Panel panel1;

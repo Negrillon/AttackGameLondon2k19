@@ -220,12 +220,10 @@ public class MenuView extends javax.swing.JFrame {
 
     private void playActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playActionPerformed
         // TODO add your handling code here:
-        switch (MenuController.getLvlChoose()) {
-            case 0:
-                JOptionPane.showMessageDialog(null, "Please, select a level.");
-                break;
-            case 1:
-                //Initialisation de la map Peut être à faire dans une méthode dans le controller
+        if (MenuController.getLvlChoose()==0) {
+            JOptionPane.showMessageDialog(null, "Please, select a level.");
+        }else{
+            //Initialisation de la map Peut être à faire dans une méthode dans le controller
                 Map.getInstance().setMap(new int[choiceRow.getItemAt(choiceRow.getSelectedIndex())][choiceColumn.getItemAt(choiceColumn.getSelectedIndex())]);
                 MenuController.setNbAnimal(choiceAnimals.getItemAt(choiceAnimals.getSelectedIndex()));
                 System.out.println("Nombre d'animaux : " + MenuController.getNbAnimal());
@@ -233,12 +231,26 @@ public class MenuView extends javax.swing.JFrame {
                 MenuController.getInstance().setPlay(true);
                 System.out.println(MenuController.getInstance().isPlay());
                 MenuController.getInstance().Play();
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
         }
+//        switch (MenuController.getLvlChoose()) {
+//            case 0:
+//                JOptionPane.showMessageDialog(null, "Please, select a level.");
+//                break;
+//            case 1:
+//                //Initialisation de la map Peut être à faire dans une méthode dans le controller
+//                Map.getInstance().setMap(new int[choiceRow.getItemAt(choiceRow.getSelectedIndex())][choiceColumn.getItemAt(choiceColumn.getSelectedIndex())]);
+//                MenuController.setNbAnimal(choiceAnimals.getItemAt(choiceAnimals.getSelectedIndex()));
+//                System.out.println("Nombre d'animaux : " + MenuController.getNbAnimal());
+//                System.out.println(MenuController.getInstance().isPlay());
+//                MenuController.getInstance().setPlay(true);
+//                System.out.println(MenuController.getInstance().isPlay());
+//                MenuController.getInstance().Play();
+//                break;
+//            case 2:
+//                break;
+//            case 3:
+//                break;
+//        }
 
     }//GEN-LAST:event_playActionPerformed
 

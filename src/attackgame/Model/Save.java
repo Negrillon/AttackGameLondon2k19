@@ -42,9 +42,21 @@ public class Save {
         String nameFile = "./src/Ressources/Save.txt";
         try {
             PrintWriter out = new PrintWriter(new FileWriter(nameFile));
-            for (int i = 0; i < Registre_Element.getInstance().listElements.size(); i++) {
+            if (MenuController.getLvlChoose()==1) {
+                for (int i = 0; i < Registre_Element.getInstance().listElements.size(); i++) {
+                out.println(Registre_Element.getInstance().listElements.get(i).name + ";" + Registre_Element.getInstance().listElements.get(i).posx + ";" + Registre_Element.getInstance().listElements.get(i).posy + ";" + Registre_Element.getInstance().listElements.get(i).reproduct + ";" + Registre_Element.getInstance().listElements.get(i).sleep + ";" + Map.getInstance().getMap().length + ";" + Map.getInstance().getMap()[0].length+";"+MenuController.getLvlChoose()+";"+Score.getNbMoves()+";"+Registre_Element.getInstance().listPlants.get(i).posx+";"+Registre_Element.getInstance().listPlants.get(i).posy);
+            }
+            }else if(MenuController.getLvlChoose()==2){
+                for (int i = 0; i < Registre_Element.getInstance().listElements.size(); i++) {
+                
+                out.println(Registre_Element.getInstance().listElements.get(i).name + ";" + Registre_Element.getInstance().listElements.get(i).posx + ";" + Registre_Element.getInstance().listElements.get(i).posy + ";" + Registre_Element.getInstance().listElements.get(i).reproduct + ";" + Registre_Element.getInstance().listElements.get(i).sleep + ";" + Map.getInstance().getMap().length + ";" + Map.getInstance().getMap()[0].length+";"+MenuController.getLvlChoose()+";"+Score.getNbMoves()+";"+Registre_Element.getInstance().listPlants.get(i).posx+";"+Registre_Element.getInstance().listPlants.get(i).posy+";"+Registre_Element.getInstance().listElements.get(i).life);
+            }
+            }else if(MenuController.getLvlChoose()==3){
+                for (int i = 0; i < Registre_Element.getInstance().listElements.size(); i++) {
                 out.println(Registre_Element.getInstance().listElements.get(i).name + ";" + Registre_Element.getInstance().listElements.get(i).posx + ";" + Registre_Element.getInstance().listElements.get(i).posy + ";" + Registre_Element.getInstance().listElements.get(i).reproduct + ";" + Registre_Element.getInstance().listElements.get(i).sleep + ";" + Map.getInstance().getMap().length + ";" + Map.getInstance().getMap()[0].length+";"+MenuController.getLvlChoose()+";"+Score.getNbMoves());
             }
+            }
+            
             out.close();
         } catch (Exception e) {
             e.printStackTrace();
