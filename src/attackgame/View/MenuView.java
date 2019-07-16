@@ -230,6 +230,7 @@ public class MenuView extends javax.swing.JFrame {
                 System.out.println(MenuController.getInstance().isPlay());
                 MenuController.getInstance().setPlay(true);
                 System.out.println(MenuController.getInstance().isPlay());
+                this.dispose();
                 MenuController.getInstance().Play();
         }
 //        switch (MenuController.getLvlChoose()) {

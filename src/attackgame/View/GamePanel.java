@@ -26,6 +26,9 @@ public class GamePanel extends JPanel {
     ImageIcon chicken = new ImageIcon("./src/Ressources/chicken.png");
     ImageIcon herb = new ImageIcon("./src/Ressources/herb.png");
     ImageIcon tree = new ImageIcon("./src/Ressources/tree.png");
+    
+    int nbWidth =0;
+    int nbHeight=0;
 
     public GamePanel(int[][] mapLoad) {
         this.map = mapLoad;
@@ -37,7 +40,10 @@ public class GamePanel extends JPanel {
     public void paintComponent(Graphics g) {
         System.out.println("paint component");
         System.out.println("WIDTH :" + this.getWidth() + "   HEIGHT:" + this.getHeight());
-
+        
+        nbWidth=600/map.length;
+        nbHeight=600/map[0].length;
+        
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[0].length; j++) {
                 switch (map[i][j]) {

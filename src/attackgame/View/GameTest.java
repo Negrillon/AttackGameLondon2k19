@@ -11,6 +11,7 @@ import attackgame.Model.Registre_Element;
 import attackgame.Model.Save;
 import attackgame.Model.Score;
 import javax.swing.JOptionPane;
+import javax.swing.border.EtchedBorder;
 
 /**
  *
@@ -26,15 +27,21 @@ public class GameTest extends javax.swing.JFrame {
     public GameTest() {
         initComponents();
         jLabel2.setText(String.valueOf(Score.getNbMoves()));
+        System.out.println("internal frame: "+this.jInternalFrame.getWidth());
         //getContentPane().add(new GamePanel(Map.getInstance().getMap()));
         //this.setContentPane(gamePanel);
         jInternalFrame.setSize(25 * Map.getInstance().getMap().length, 25 * Map.getInstance().getMap()[0].length);
         jInternalFrame.setContentPane(gamePanel);
-        this.setResizable(true);
+        this.setResizable(false);
         this.setTitle("GameTEST");
         setVisible(true);
         this.setLocationRelativeTo(null);
-        this.setSize(this.getWidth(), this.getHeight());
+        this.setSize(715, 600);
+        //this.jInternalFrame.setSize(25*Map.getInstance().getMap().length, 25*Map.getInstance().getMap()[0].length);
+        //this.jInternalFrame.setBounds(0, 0, 25*Map.getInstance().getMap().length, 25*Map.getInstance().getMap()[0].length);
+        this.jInternalFrame.setBorder(new EtchedBorder());
+        //this.jInternalFrame.setSize(25*Map.getInstance().getMap().length, 25*Map.getInstance().getMap()[0].length);
+        
         System.out.println("width écran: " + this.getWidth() + " height :" + this.getHeight());
         //chatArea.append("coucou\n");
         if (Registre_Element.getInstance().countSpecies()) {
@@ -71,18 +78,21 @@ public class GameTest extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(600, 600));
 
-        jInternalFrame.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jInternalFrame.setBorder(null);
         jInternalFrame.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        jInternalFrame.setMinimumSize(new java.awt.Dimension(420, 318));
-        jInternalFrame.setSize(new java.awt.Dimension(420, 318));
+        jInternalFrame.setBounds(0, 0, 25*Map.getInstance().getMap().length, 25*Map.getInstance().getMap()[0].length);
+        jInternalFrame.setMinimumSize(new java.awt.Dimension(600, 600));
+        jInternalFrame.setPreferredSize(new java.awt.Dimension(500, 500));
+        jInternalFrame.setSize(25*Map.getInstance().getMap().length, 25*Map.getInstance().getMap()[0].length);
         jInternalFrame.setVisible(true);
 
         javax.swing.GroupLayout jInternalFrameLayout = new javax.swing.GroupLayout(jInternalFrame.getContentPane());
         jInternalFrame.getContentPane().setLayout(jInternalFrameLayout);
         jInternalFrameLayout.setHorizontalGroup(
             jInternalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 416, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jInternalFrameLayout.setVerticalGroup(
             jInternalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,7 +154,7 @@ public class GameTest extends javax.swing.JFrame {
                 .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
-                .addContainerGap(98, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         jButton1.setText("Save");
@@ -160,51 +170,51 @@ public class GameTest extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jInternalFrame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(left, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
+                        .addComponent(left, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(up, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(down, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE))
+                            .addComponent(down, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(right, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)))
+                        .addComponent(right, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jInternalFrame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap())
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap())
+                                .addComponent(jButton1)
+                                .addGap(72, 72, 72))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)
-                        .addGap(69, 69, 69))))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addContainerGap()
+                .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jInternalFrame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jInternalFrame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(up, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(right, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(left, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(down, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(20, 20, 20))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1))))
+                            .addComponent(down, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
         );
 
         pack();
@@ -221,6 +231,7 @@ public class GameTest extends javax.swing.JFrame {
         jLabel2.setText(String.valueOf(Score.getNbMoves()));
         if (Registre_Element.getInstance().countSpecies()) {
             JOptionPane.showMessageDialog(null, "Game finished ! Well played !");
+            System.exit(0);
         }
     }//GEN-LAST:event_upActionPerformed
 
@@ -255,14 +266,9 @@ public class GameTest extends javax.swing.JFrame {
         Score.setNbMoves(Score.getNbMoves() + 1);
         int choice = 4;
         GameController.getInstance().moveController(choice, Registre_Element.getInstance());
-        System.out.println("Width :" + this.getWidth() + " Height :" + this.getHeight());
         repaint();
         revalidate();
         jLabel2.setText(String.valueOf(Score.getNbMoves()));
-        if (Score.getNbMoves()==Score.getNbMoves()%5 ) {
-            chatArea.append("Numbers of moves : "+ Score.getNbMoves() +"\n");
-        }
-        //chatArea.append("Nb de coup :" + Score.getNbMoves());
         if (Registre_Element.getInstance().countSpecies()) {
             JOptionPane.showMessageDialog(null, "Game finished ! Well played !");
         }

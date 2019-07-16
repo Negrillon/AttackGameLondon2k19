@@ -57,7 +57,7 @@ public class MenuController {
     public void Play() {
         System.out.println("Game loading");
         GameController.getInstance();
-        menuView.dispose();
+        //menuView.dispose();
 //<<<<<<< HEAD
         System.out.println(Map.getInstance().getMap().length);
         System.out.println(Map.getInstance().getMap()[1].length);
