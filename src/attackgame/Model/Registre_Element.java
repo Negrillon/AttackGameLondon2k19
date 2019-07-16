@@ -41,11 +41,13 @@ public class Registre_Element {
         for (int i = 0; i < Math.round((Map.getInstance().getMap().length * Map.getInstance().getMap()[0].length) / 10); i++) {
             listPlants.add(creatPlant());
         }
-        for(int i = 0 ; i < Math.round((Map.getInstance().getMap().length*Map.getInstance().getMap()[0].length)/10) ; i++)
-        {
-            listObstacles.add(creatObstacle());
+        if (MenuController.getLvlChoose() == 3)
+        {    
+            for(int i = 0 ; i < Math.round((Map.getInstance().getMap().length*Map.getInstance().getMap()[0].length)/10) ; i++)
+            {
+                listObstacles.add(creatObstacle());
+            }
         }
-        
 //        Element chat = new Cat(0,0);
 //        Element chien = new Dog(4,4);
 //        listElements.add(chat);
