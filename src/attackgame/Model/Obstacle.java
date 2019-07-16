@@ -9,11 +9,12 @@ package attackgame.Model;
  *
  * @author Roman
  */
-public class Plante extends Element{
-    public Plante(int posx, int posy) {
-        
-        name = "Plant" ;
+public class Obstacle extends Element{
+    public Obstacle(int posx, int posy)
+    {        
+        name = "Obstacle" ;
         this.posx = posx;
         this.posy = posy;
     }
+    
 }

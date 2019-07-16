@@ -17,6 +17,9 @@ public abstract class Element
     public String attack;
     public boolean sleep=false;
     public boolean reproduct=true;
+    public boolean toxic;
+    public int life;
+    public boolean carnivore;
     
     public void move_up(){}
 
@@ -26,7 +29,7 @@ public abstract class Element
 
     public void move_right(){}
     
-    public boolean attack(Element a2){return false;}
+    public void attack(Element a2){}
     
     public boolean reproduct(){return false;}
     

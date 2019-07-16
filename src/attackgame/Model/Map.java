@@ -53,12 +53,18 @@ public class Map {
         }
     }
 
-    public void remplirMap(ArrayList<Element> listElements) {
-        for (int i = 0; i < listElements.size(); i++) 
+    public void remplirMap() {
+        for (int i = 0; i < Registre_Element.getInstance().listPlants.size(); i++) 
         {
-            int x = listElements.get(i).posx;
-            int y = listElements.get(i).posy;
-            switch(listElements.get(i).name)
+            int x = Registre_Element.getInstance().listPlants.get(i).posx;
+            int y = Registre_Element.getInstance().listPlants.get(i).posy;
+            Map.getInstance().getMap()[x][y] = 6;
+        }
+        for (int i = 0; i < Registre_Element.getInstance().listElements.size() ; i++) 
+        {
+            int x = Registre_Element.getInstance().listElements.get(i).posx;
+            int y = Registre_Element.getInstance().listElements.get(i).posy;
+            switch(Registre_Element.getInstance().listElements.get(i).name)
             {
                 case "Cat":
                     Map.getInstance().getMap()[x][y] = 1;

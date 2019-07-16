@@ -5,6 +5,7 @@
  */
 package attackgame.Model;
 
+import attackgame.Controller.MenuController;
 import java.awt.List;
 import java.util.ArrayList;
 import java.util.Random;
@@ -18,7 +19,8 @@ public class Registre_Element {
     private static Registre_Element Registre_ElementInstance = null;
     
     public ArrayList<Element> listElements = new ArrayList<Element>();
-    
+    public ArrayList<Plante> listPlants = new ArrayList<Plante>();
+    private int turnCounter=0;
     public static Registre_Element getInstance() {
         if(Registre_ElementInstance == null) {
             Registre_ElementInstance = new Registre_Element();
@@ -28,9 +30,13 @@ public class Registre_Element {
     
     public void remplirList()
     {
-        for(int i = 0 ; i<2 ; i++)
+        for(int i = 0 ; i<MenuController.getNbAnimal() ; i++)
         {
             listElements.add(randAnimal());
+        }
+        for(int i = 0 ; i < Math.round((Map.getInstance().getMap().length*Map.getInstance().getMap()[0].length)/10) ; i++)
+        {
+            listPlants.add(creatPlant());
         }
 //        Element chat = new Cat(0,0);
 //        Element chien = new Dog(4,4);
@@ -46,7 +52,12 @@ public class Registre_Element {
             this.listElements.get(i).move_up();
         }
         actionList();
-
+        if(!this.listPlants.isEmpty())
+        {    
+            eatPlant();
+        }
+        this.turnCounter++;
+        growsPlant();
     }
     
     public void moveAll_down()
@@ -56,7 +67,12 @@ public class Registre_Element {
             this.listElements.get(i).move_down();
         } 
         actionList();
-
+        if(!this.listPlants.isEmpty())
+        {    
+            eatPlant();
+        }
+        this.turnCounter++;
+        growsPlant();
     }
     
     public void moveAll_left()
@@ -66,7 +82,12 @@ public class Registre_Element {
             this.listElements.get(i).move_left();
         } 
         actionList();
-
+        if(!this.listPlants.isEmpty())
+        {    
+            eatPlant();
+        }
+        this.turnCounter++;
+        growsPlant();
     }
     
     public void moveAll_right()
@@ -76,7 +97,12 @@ public class Registre_Element {
             this.listElements.get(i).move_right();
         }
         actionList();
-                
+        if(!this.listPlants.isEmpty())
+        {    
+            eatPlant();
+        }
+        this.turnCounter++;
+        growsPlant();
     }
 
     private boolean collision(Element e1, Element e2)
@@ -86,6 +112,23 @@ public class Registre_Element {
             return true;
         }
         else return false;
+    }
+    private boolean collision(Element e1, Plante p1)
+    {
+        if(e1.posx==p1.posx && e1.posy==p1.posy)
+        {
+            return true;
+        }
+        else return false;
+    }
+    
+    private Plante creatPlant()
+    {
+        Random rand = new Random();
+        int posx = rand.nextInt(Map.getInstance().getMap().length);
+        int posy = rand.nextInt(Map.getInstance().getMap()[0].length);
+        Plante plant = new Plante(posx,posy);
+        return plant;
     }
     
     private Element randAnimal()
@@ -97,23 +140,23 @@ public class Registre_Element {
         switch (a)
         {
             case 0:
-                Element chat = new Cat(posx,posy);
+                Element chat = new Cat(posx,posy,MenuController.getLvlChoose());
                 return chat;
                
             case 1:
-                Element chien = new Dog(posx,posy);
+                Element chien = new Dog(posx,posy,MenuController.getLvlChoose());
                 return chien;
                 
             case 2:
-                Element loup = new Wolf(posx,posy);
+                Element loup = new Wolf(posx,posy,MenuController.getLvlChoose());
                 return loup;
                 
             case 3:
-                Element vache = new Cow(posx,posy);
+                Element vache = new Cow(posx,posy,MenuController.getLvlChoose());
                 return vache;
                 
             case 4:
-                Element poule = new Chicken(posx,posy);
+                Element poule = new Chicken(posx,posy,MenuController.getLvlChoose());
                 return poule;
         }
         return null;
@@ -122,30 +165,31 @@ public class Registre_Element {
     
     private void newAnimal(Element a)
     {
+        
         switch(a.name)
             {
                 case "Cat":
-                    Element chat = new Cat(a.posx,a.posy);
+                    Element chat = new Cat(a.posx,a.posy,MenuController.getLvlChoose());
                     chat.set_sleep(true);
                     this.listElements.add(chat);
                     break;
                 case "Dog":
-                    Element chien = new Dog(a.posx,a.posy);
+                    Element chien = new Dog(a.posx,a.posy,MenuController.getLvlChoose());
                     chien.set_sleep(true);
                     this.listElements.add(chien);
                     break;
                 case "Wolf":
-                    Element loup = new Wolf(a.posx,a.posy);
+                    Element loup = new Wolf(a.posx,a.posy,MenuController.getLvlChoose());
                     loup.set_sleep(true);
                     this.listElements.add(loup);
                     break;
                 case "Cow":
-                    Element vache = new Cow(a.posx,a.posy);
+                    Element vache = new Cow(a.posx,a.posy,MenuController.getLvlChoose());
                     vache.set_sleep(true);
                     this.listElements.add(vache);
                     break;
                 case "Chicken":
-                    Element poule = new Chicken(a.posx,a.posy);
+                    Element poule = new Chicken(a.posx,a.posy,MenuController.getLvlChoose());
                     poule.set_sleep(true);
                     this.listElements.add(poule);
                     break;
@@ -184,18 +228,53 @@ public class Registre_Element {
                             newAnimal(this.listElements.get(i));
                         }
                     }
-                    else if (this.listElements.get(i).attack(this.listElements.get(j)))
+                    else this.listElements.get(i).attack(this.listElements.get(j));
+                    
+                    if (!testLife(this.listElements.get(i)))
                     {
                         this.listElements.remove(i);
+                        break;
                     }
-                    else if(!this.listElements.get(i).attack(this.listElements.get(j)))
-                    {        
+                    if (!testLife(this.listElements.get(j)))
+                    {
                         this.listElements.remove(j);
+                        break;
                     }
                 }
             }
         }
     }
     
-
+    private void eatPlant()
+    {
+        for(int i = 0 ; i < this.listElements.size() ; i++)
+        {
+            for(int j = 0 ; j < this.listPlants.size() ; j++)
+            {
+                if(collision( this.listElements.get(i), this.listPlants.get(j)) && !this.listElements.get(i).carnivore)
+                {
+                    this.listPlants.remove(j);
+                    this.listElements.get(i).set_sleep(true);
+                    System.out.println(this.listPlants.size());
+                }
+            }
+        }
+    }
+    
+    private void growsPlant()
+    {
+        if (this.turnCounter%5 == 0)
+        {
+            listPlants.add(creatPlant());
+        }
+    }
+    
+    private boolean testLife(Element e)
+    {
+        if(e.life == 0)
+        {
+           return false; 
+        }
+        else return true;
+    }
 }
