@@ -13,7 +13,7 @@ public abstract class Animal extends Element {
     //test
     Action action = new Action();
     public int move ;
-    public boolean carnivore;
+    
    
     @Override
     public void move_down()
@@ -36,9 +36,9 @@ public abstract class Animal extends Element {
         action.move_right(this);
     }
     @Override
-    public boolean attack(Element a2)
+    public void attack(Element a2)
     {
-        return action.attack(this,  a2);
+        action.attack(this,  a2);
     }
     @Override
     public boolean reproduct()

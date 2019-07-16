@@ -13,11 +13,23 @@ import java.util.Random;
  */
 public class Dog extends Animal{
         
-    public Dog(int posx, int posy) {
+    public Dog(int posx, int posy, int niveau) {
         name = "Dog" ;
         move = 3 ;
         carnivore = true ; 
         this.posx = posx;
         this.posy = posy;
+        switch (niveau)
+        {
+            case 1:
+                life=1;
+                break;
+            case 2:
+                life=2;
+                break;
+            case 3:
+                life=2;
+                break;
+        }
     }
 }

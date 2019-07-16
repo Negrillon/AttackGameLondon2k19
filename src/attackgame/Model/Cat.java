@@ -16,12 +16,24 @@ public class Cat extends Animal {
     Random rand = new Random();
     
     
-    public Cat(int posx, int posy) {
+    public Cat(int posx, int posy, int niveau) {
         name = "Cat" ;
         move = 5 ;
         carnivore = true ;  
         this.posx = posx;
         this.posy = posy;
+        switch (niveau)
+        {
+            case 1:
+                life=1;
+                break;
+            case 2:
+                life=1;
+                break;
+            case 3:
+                life=1;
+                break;
+        }
     }
     
 }

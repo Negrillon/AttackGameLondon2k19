@@ -140,23 +140,23 @@ public class Registre_Element {
         switch (a)
         {
             case 0:
-                Element chat = new Cat(posx,posy);
+                Element chat = new Cat(posx,posy,2);
                 return chat;
                
             case 1:
-                Element chien = new Dog(posx,posy);
+                Element chien = new Dog(posx,posy,2);
                 return chien;
                 
             case 2:
-                Element loup = new Wolf(posx,posy);
+                Element loup = new Wolf(posx,posy,2);
                 return loup;
                 
             case 3:
-                Element vache = new Cow(posx,posy);
+                Element vache = new Cow(posx,posy,2);
                 return vache;
                 
             case 4:
-                Element poule = new Chicken(posx,posy);
+                Element poule = new Chicken(posx,posy,2);
                 return poule;
         }
         return null;
@@ -168,27 +168,27 @@ public class Registre_Element {
         switch(a.name)
             {
                 case "Cat":
-                    Element chat = new Cat(a.posx,a.posy);
+                    Element chat = new Cat(a.posx,a.posy,1);
                     chat.set_sleep(true);
                     this.listElements.add(chat);
                     break;
                 case "Dog":
-                    Element chien = new Dog(a.posx,a.posy);
+                    Element chien = new Dog(a.posx,a.posy,1);
                     chien.set_sleep(true);
                     this.listElements.add(chien);
                     break;
                 case "Wolf":
-                    Element loup = new Wolf(a.posx,a.posy);
+                    Element loup = new Wolf(a.posx,a.posy,1);
                     loup.set_sleep(true);
                     this.listElements.add(loup);
                     break;
                 case "Cow":
-                    Element vache = new Cow(a.posx,a.posy);
+                    Element vache = new Cow(a.posx,a.posy,1);
                     vache.set_sleep(true);
                     this.listElements.add(vache);
                     break;
                 case "Chicken":
-                    Element poule = new Chicken(a.posx,a.posy);
+                    Element poule = new Chicken(a.posx,a.posy,1);
                     poule.set_sleep(true);
                     this.listElements.add(poule);
                     break;
@@ -227,14 +227,26 @@ public class Registre_Element {
                             newAnimal(this.listElements.get(i));
                         }
                     }
-                    else if (this.listElements.get(i).attack(this.listElements.get(j)))
+                    else this.listElements.get(i).attack(this.listElements.get(j));
+                    
+                    if (!testLife(this.listElements.get(i)))
+                    {
+                        this.listElements.remove(i);
+                        break;
+                    }
+                    if (!testLife(this.listElements.get(j)))
+                    {
+                        this.listElements.remove(j);
+                        break;
+                    }
+                    /*else if ()
                     {
                         this.listElements.remove(i);
                     }
                     else if(!this.listElements.get(i).attack(this.listElements.get(j)))
                     {        
                         this.listElements.remove(j);
-                    }
+                    }*/
                 }
             }
         }
@@ -246,7 +258,7 @@ public class Registre_Element {
         {
             for(int j = 0 ; j < this.listElements.size() ; j++)
             {
-                if(collision( this.listElements.get(i), this.listPlants.get(j)))
+                if(collision( this.listElements.get(i), this.listPlants.get(j)) && !this.listElements.get(i).carnivore)
                 {
                     this.listPlants.remove(j);
                     this.listElements.get(i).set_sleep(true);
@@ -258,12 +270,18 @@ public class Registre_Element {
     
     private void growsPlant()
     {
-        if (this.turnCounter%5==0)
+        if (this.turnCounter%5 == 0)
         {
-            for(int i = 0 ; i < Math.round((Map.getInstance().getMap().length*Map.getInstance().getMap()[0].length)/10) ; i++)
-            {
-                listPlants.add(creatPlant());
-            }
+            listPlants.add(creatPlant());
         }
+    }
+    
+    private boolean testLife(Element e)
+    {
+        if(e.life == 0)
+        {
+           return false; 
+        }
+        else return true;
     }
 }

@@ -10,11 +10,23 @@ package attackgame.Model;
  * @author Roman
  */
 public class Wolf extends Animal{
-        public Wolf(int posx, int posy) {
+        public Wolf(int posx, int posy, int niveau) {
         name = "Wolf" ;
         move = 4 ;
         carnivore = true ; 
         this.posx = posx;
         this.posy = posy;
+        switch (niveau)
+        {
+            case 1:
+                life=1;
+                break;
+            case 2:
+                life=2;
+                break;
+            case 3:
+                life=2;
+                break;
+        }
     }
 }

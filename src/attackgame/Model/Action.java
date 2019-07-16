@@ -83,7 +83,7 @@ public class Action{
         else a1.posx=Map.getInstance().getMap().length-1;
     }
     
-    public boolean attack (Animal a1, Element a2)
+    public void attack (Animal a1, Element a2)
     {
         int a = rand.nextInt(3);
         switch (a)
@@ -114,25 +114,31 @@ public class Action{
         }
         if(a1.sleep)
         {
-            return false;
+            a1.life-=1;
+            return ;
         }
-        if(a2.sleep)
+        else if(a2.sleep)
         {
-            return true;
+            a2.life-=1;
+            return;
         }
-        if ("Roar".equals(a1.attack) && "Scratch".equals(a2.attack) || "Bite".equals(a1.attack) && "Roar".equals(a2.attack) || "Scratch".equals(a1.attack) && "Bite".equals(a2.attack))
+        else if ("Roar".equals(a1.attack) && "Scratch".equals(a2.attack) || "Bite".equals(a1.attack) && "Roar".equals(a2.attack) || "Scratch".equals(a1.attack) && "Bite".equals(a2.attack))
         {
             System.out.println("The "+a1.name+" use "+a1.attack);
             System.out.println("The "+a2.name+" use "+a2.attack);
             System.out.println("The "+a1.name+" kill the "+a2.name);
-            return false;
+            a2.life-=1;
+            return;
+            
         }
         else if("Roar".equals(a2.attack) && "Scratch".equals(a1.attack)|| "Bite".equals(a2.attack) && "Roar".equals(a1.attack) || "Scratch".equals(a2.attack) && "Bite".equals(a1.attack))
         {
             System.out.println("The "+a1.name+" use "+a1.attack);
             System.out.println("The "+a2.name+" use "+a2.attack);
             System.out.println("The "+a2.name+" kill the "+a1.name);
-            return true;       
+            a1.life-=1;
+            return;
+                   
         }
         a = rand.nextInt(2);
         switch (a)
@@ -141,14 +147,18 @@ public class Action{
                 System.out.println("The "+a1.name+" use "+a1.attack);
                 System.out.println("The "+a2.name+" use "+a2.attack);
                 System.out.println("The "+a1.name+" kill the "+a2.name);
-                return false;               
+                a2.life-=1;
+                return;
+                              
             case 1:
                 System.out.println("The "+a1.name+" use "+a1.attack);
                 System.out.println("The "+a2.name+" use "+a2.attack);
                 System.out.println("The "+a2.name+" kill the "+a1.name);
-                return true;    
+                a1.life-=1;
+                return;
+                   
         }
-        return true;
+        
     }
     
     public boolean reproductible(Animal a1)
