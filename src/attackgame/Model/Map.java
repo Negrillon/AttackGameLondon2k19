@@ -53,7 +53,13 @@ public class Map {
         }
     }
 
-    public void remplirMap(ArrayList<Element> listElements) {
+    public void remplirMap(ArrayList<Element> listElements, ArrayList<Plante> listPlants) {
+        for (int i = 0; i < listPlants.size(); i++) 
+        {
+            int x = listPlants.get(i).posx;
+            int y = listPlants.get(i).posy;
+            Map.getInstance().getMap()[x][y] = 6;
+        }
         for (int i = 0; i < listElements.size(); i++) 
         {
             int x = listElements.get(i).posx;

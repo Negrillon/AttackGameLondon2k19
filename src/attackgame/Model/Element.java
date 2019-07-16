@@ -17,6 +17,8 @@ public abstract class Element
     public String attack;
     public boolean sleep=false;
     public boolean reproduct=true;
+    public boolean toxic;
+
     
     public void move_up(){}
 

@@ -112,7 +112,14 @@ public class Action{
                 a2.attack = "Scratch";
                 break;
         }
-        
+        if(a1.sleep)
+        {
+            return false;
+        }
+        if(a2.sleep)
+        {
+            return true;
+        }
         if ("Roar".equals(a1.attack) && "Scratch".equals(a2.attack) || "Bite".equals(a1.attack) && "Roar".equals(a2.attack) || "Scratch".equals(a1.attack) && "Bite".equals(a2.attack))
         {
             System.out.println("The "+a1.name+" use "+a1.attack);
