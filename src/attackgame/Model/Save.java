@@ -61,27 +61,27 @@ public class Save {
             String word[] = line.split(";");
             for (int i = 0; i < word.length; i++) {
                 if (word[0].equals("Cat")) {
-                    Cat cat = new Cat(Integer.parseInt(word[1]), Integer.parseInt(word[2]));
+                    Cat cat = new Cat(Integer.parseInt(word[1]), Integer.parseInt(word[2]),Integer.parseInt(word[7]));
                     cat.set_reproduct(Boolean.valueOf(word[3]));
                     cat.set_sleep(Boolean.valueOf(word[4]));
                     Registre_Element.getInstance().listElements.add(cat);
                 } else if (word[0].equals("Dog")) {
-                    Dog dog = new Dog(Integer.parseInt(word[1]), Integer.parseInt(word[2]));
+                    Dog dog = new Dog(Integer.parseInt(word[1]), Integer.parseInt(word[2]),Integer.parseInt(word[7]));
                     dog.set_reproduct(Boolean.valueOf(word[3]));
                     dog.set_sleep(Boolean.valueOf(word[4]));
                     Registre_Element.getInstance().listElements.add(dog);
                 } else if (word[0].equals("Chicken")) {
-                    Chicken chicken = new Chicken(Integer.parseInt(word[1]), Integer.parseInt(word[2]));
+                    Chicken chicken = new Chicken(Integer.parseInt(word[1]), Integer.parseInt(word[2]),Integer.parseInt(word[7]));
                     chicken.set_reproduct(Boolean.valueOf(word[3]));
                     chicken.set_sleep(Boolean.valueOf(word[4]));
                     Registre_Element.getInstance().listElements.add(chicken);
                 } else if (word[0].equals("Cow")) {
-                    Cow cow = new Cow(Integer.parseInt(word[1]), Integer.parseInt(word[2]));
+                    Cow cow = new Cow(Integer.parseInt(word[1]), Integer.parseInt(word[2]),Integer.parseInt(word[7]));
                     cow.set_reproduct(Boolean.valueOf(word[3]));
                     cow.set_sleep(Boolean.valueOf(word[4]));
                     Registre_Element.getInstance().listElements.add(cow);
                 } else if (word[0].equals("Wolf")) {
-                    Wolf wolf = new Wolf(Integer.parseInt(word[1]), Integer.parseInt(word[2]));
+                    Wolf wolf = new Wolf(Integer.parseInt(word[1]), Integer.parseInt(word[2]),Integer.parseInt(word[7]));
                     wolf.set_reproduct(Boolean.valueOf(word[3]));
                     wolf.set_sleep(Boolean.valueOf(word[4]));
                     Registre_Element.getInstance().listElements.add(wolf);
