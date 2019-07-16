@@ -140,23 +140,23 @@ public class Registre_Element {
         switch (a)
         {
             case 0:
-                Element chat = new Cat(posx,posy,2);
+                Element chat = new Cat(posx,posy,MenuController.getLvlChoose());
                 return chat;
                
             case 1:
-                Element chien = new Dog(posx,posy,2);
+                Element chien = new Dog(posx,posy,MenuController.getLvlChoose());
                 return chien;
                 
             case 2:
-                Element loup = new Wolf(posx,posy,2);
+                Element loup = new Wolf(posx,posy,MenuController.getLvlChoose());
                 return loup;
                 
             case 3:
-                Element vache = new Cow(posx,posy,2);
+                Element vache = new Cow(posx,posy,MenuController.getLvlChoose());
                 return vache;
                 
             case 4:
-                Element poule = new Chicken(posx,posy,2);
+                Element poule = new Chicken(posx,posy,MenuController.getLvlChoose());
                 return poule;
         }
         return null;
@@ -165,30 +165,31 @@ public class Registre_Element {
     
     private void newAnimal(Element a)
     {
+        
         switch(a.name)
             {
                 case "Cat":
-                    Element chat = new Cat(a.posx,a.posy,1);
+                    Element chat = new Cat(a.posx,a.posy,MenuController.getLvlChoose());
                     chat.set_sleep(true);
                     this.listElements.add(chat);
                     break;
                 case "Dog":
-                    Element chien = new Dog(a.posx,a.posy,1);
+                    Element chien = new Dog(a.posx,a.posy,MenuController.getLvlChoose());
                     chien.set_sleep(true);
                     this.listElements.add(chien);
                     break;
                 case "Wolf":
-                    Element loup = new Wolf(a.posx,a.posy,1);
+                    Element loup = new Wolf(a.posx,a.posy,MenuController.getLvlChoose());
                     loup.set_sleep(true);
                     this.listElements.add(loup);
                     break;
                 case "Cow":
-                    Element vache = new Cow(a.posx,a.posy,1);
+                    Element vache = new Cow(a.posx,a.posy,MenuController.getLvlChoose());
                     vache.set_sleep(true);
                     this.listElements.add(vache);
                     break;
                 case "Chicken":
-                    Element poule = new Chicken(a.posx,a.posy,1);
+                    Element poule = new Chicken(a.posx,a.posy,MenuController.getLvlChoose());
                     poule.set_sleep(true);
                     this.listElements.add(poule);
                     break;
@@ -239,14 +240,6 @@ public class Registre_Element {
                         this.listElements.remove(j);
                         break;
                     }
-                    /*else if ()
-                    {
-                        this.listElements.remove(i);
-                    }
-                    else if(!this.listElements.get(i).attack(this.listElements.get(j)))
-                    {        
-                        this.listElements.remove(j);
-                    }*/
                 }
             }
         }
@@ -256,7 +249,7 @@ public class Registre_Element {
     {
         for(int i = 0 ; i < this.listElements.size() ; i++)
         {
-            for(int j = 0 ; j < this.listElements.size() ; j++)
+            for(int j = 0 ; j < this.listPlants.size() ; j++)
             {
                 if(collision( this.listElements.get(i), this.listPlants.get(j)) && !this.listElements.get(i).carnivore)
                 {

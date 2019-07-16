@@ -126,7 +126,7 @@ public class Action{
         {
             System.out.println("The "+a1.name+" use "+a1.attack);
             System.out.println("The "+a2.name+" use "+a2.attack);
-            System.out.println("The "+a1.name+" kill the "+a2.name);
+            System.out.println("The "+a1.name+" hurts the "+a2.name);
             a2.life-=1;
             return;
             
@@ -135,7 +135,7 @@ public class Action{
         {
             System.out.println("The "+a1.name+" use "+a1.attack);
             System.out.println("The "+a2.name+" use "+a2.attack);
-            System.out.println("The "+a2.name+" kill the "+a1.name);
+            System.out.println("The "+a2.name+" hurts the "+a1.name);
             a1.life-=1;
             return;
                    
@@ -146,14 +146,14 @@ public class Action{
             case 0:
                 System.out.println("The "+a1.name+" use "+a1.attack);
                 System.out.println("The "+a2.name+" use "+a2.attack);
-                System.out.println("The "+a1.name+" kill the "+a2.name);
+                System.out.println("The "+a1.name+" hurts the "+a2.name);
                 a2.life-=1;
                 return;
                               
             case 1:
                 System.out.println("The "+a1.name+" use "+a1.attack);
                 System.out.println("The "+a2.name+" use "+a2.attack);
-                System.out.println("The "+a2.name+" kill the "+a1.name);
+                System.out.println("The "+a2.name+" hurts the "+a1.name);
                 a1.life-=1;
                 return;
                    
