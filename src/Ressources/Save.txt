@@ -1,0 +1,2 @@
+Dog;0;0;true;false
+Cow;3;0;true;false

@@ -6,6 +6,7 @@
 package attackgame.View;
 
 import attackgame.Controller.MenuController;
+import attackgame.Model.Save;
 
 /**
  *
@@ -46,6 +47,11 @@ public class Beginning extends javax.swing.JFrame {
         });
 
         jButton2.setText("Resume a Game");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font(".SF NS Text", 1, 18)); // NOI18N
         jLabel1.setText("Attack Game");
@@ -86,6 +92,12 @@ public class Beginning extends javax.swing.JFrame {
         MenuController.getInstance();
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        Save.readFile();
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

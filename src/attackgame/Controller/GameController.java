@@ -97,7 +97,8 @@ public class GameController {
                 break;
         }
     }
-
+    
+    //Condition de fin de jeu
 
     
 //    public boolean goalTest() {
