@@ -25,12 +25,26 @@ public class Action{
         }
         else a = rand.nextInt(a1.move);
         Map.getInstance().getMap()[a1.posx][a1.posy] = 0;
-        if (a1.posx-a>=0)
-        {
-            a1.posx-=a ;  
+
+        for(int i = 0 ; i < a ; i++)
+        {   
+            for (int j=0 ; j<Registre_Element.getInstance().listObstacles.size();j++)
+            {
+                if(a1.posx-1==Registre_Element.getInstance().listObstacles.get(j).posx && a1.posy==Registre_Element.getInstance().listObstacles.get(j).posy)
+                {
+                    return;
+                }
+                else;
+            }
+            if (a1.posx-a>0)
+            {
+                a1.posx-=1 ;
+            }
+            else a1.posx=0;
         }
-        else a1.posx=0;
     }
+        
+    
     
     public void move_right (Animal a1)
     {
@@ -42,11 +56,22 @@ public class Action{
         }
         else a = rand.nextInt(a1.move);
         Map.getInstance().getMap()[a1.posx][a1.posy] = 0;
-        if(a1.posy+a<Map.getInstance().getMap()[0].length)
-        {    
-            a1.posy+=a ;
+        for(int i = 0 ; i < a ; i++)
+        {
+            for (int j=0 ; j<Registre_Element.getInstance().listObstacles.size();j++)
+            {
+                if(a1.posx==Registre_Element.getInstance().listObstacles.get(j).posx && a1.posy+1==Registre_Element.getInstance().listObstacles.get(j).posy)
+                {
+                    return;
+                }
+                else;
+            }
+            if(a1.posy+a<Map.getInstance().getMap()[0].length)
+            {    
+                a1.posy+=1 ;
+            }
+            else a1.posy=Map.getInstance().getMap()[0].length-1;
         }
-        else a1.posy=Map.getInstance().getMap()[0].length-1;
     }
     
     public void move_left (Animal a1)
@@ -59,11 +84,23 @@ public class Action{
         }
         else a = rand.nextInt(a1.move);
         Map.getInstance().getMap()[a1.posx][a1.posy] = 0;
-        if (a1.posy-a>=0)
+        for(int i = 0 ; i < a ; i++)
         {
-            a1.posy-=a ;  
+            for (int j=0 ; j<Registre_Element.getInstance().listObstacles.size();j++)
+            {
+                if(a1.posx==Registre_Element.getInstance().listObstacles.get(j).posx && a1.posy-1==Registre_Element.getInstance().listObstacles.get(j).posy)
+                {
+                    return;
+                }
+                else;
+            }
+            
+            if (a1.posy-a>0)
+            {
+                a1.posy-=1 ;  
+            }
+            else a1.posy=0;
         }
-        else a1.posy=0;
     }
     
     public void move_down (Animal a1)
@@ -76,11 +113,22 @@ public class Action{
         }
         else a = rand.nextInt(a1.move);
         Map.getInstance().getMap()[a1.posx][a1.posy] = 0;
-        if(a1.posx+a<Map.getInstance().getMap().length)
+        for(int i = 0 ; i < a ; i++)
         {
-            a1.posx+=a ;
+            for (int j=0 ; j<Registre_Element.getInstance().listObstacles.size();j++)
+            {
+                if(a1.posx+1==Registre_Element.getInstance().listObstacles.get(j).posx && a1.posy==Registre_Element.getInstance().listObstacles.get(j).posy)
+                {
+                    return;
+                }
+                else;
+            }
+            if(a1.posx+a<Map.getInstance().getMap().length)
+            {
+                a1.posx+=1 ;
+            }
+            else a1.posx=Map.getInstance().getMap().length-1;
         }
-        else a1.posx=Map.getInstance().getMap().length-1;
     }
     
     public void attack (Animal a1, Element a2)
