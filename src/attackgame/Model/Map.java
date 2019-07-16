@@ -84,6 +84,12 @@ public class Map {
                  
             }
         }
+        for (int i = 0; i < Registre_Element.getInstance().listObstacles.size(); i++) 
+        {
+            int x = Registre_Element.getInstance().listObstacles.get(i).posx;
+            int y = Registre_Element.getInstance().listObstacles.get(i).posy;
+            Map.getInstance().getMap()[x][y] = 7;
+        }
 
     }
 

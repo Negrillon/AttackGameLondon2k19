@@ -20,8 +20,13 @@ public class Registre_Element {
 
     public ArrayList<Element> listElements = new ArrayList<Element>();
     public ArrayList<Plante> listPlants = new ArrayList<Plante>();
-    private int turnCounter = 0;
 
+
+
+    public ArrayList<Obstacle> listObstacles = new ArrayList<Obstacle>();
+    private int turnCounter=0;
+    
+    
     public static Registre_Element getInstance() {
         if (Registre_ElementInstance == null) {
             Registre_ElementInstance = new Registre_Element();
@@ -36,6 +41,11 @@ public class Registre_Element {
         for (int i = 0; i < Math.round((Map.getInstance().getMap().length * Map.getInstance().getMap()[0].length) / 10); i++) {
             listPlants.add(creatPlant());
         }
+        for(int i = 0 ; i < Math.round((Map.getInstance().getMap().length*Map.getInstance().getMap()[0].length)/10) ; i++)
+        {
+            listObstacles.add(creatObstacle());
+        }
+        
 //        Element chat = new Cat(0,0);
 //        Element chien = new Dog(4,4);
 //        listElements.add(chat);
@@ -115,7 +125,18 @@ public class Registre_Element {
         return plant;
     }
 
-    private Element randAnimal() {
+
+    private Obstacle creatObstacle()
+    {
+        Random rand = new Random();
+        int posx = rand.nextInt(Map.getInstance().getMap().length);
+        int posy = rand.nextInt(Map.getInstance().getMap()[0].length);
+        Obstacle obstacle = new Obstacle(posx,posy);
+        return obstacle;
+    }
+    
+    private Element randAnimal()
+    {
         Random rand = new Random();
         int a = rand.nextInt(5);
         int posx = rand.nextInt(Map.getInstance().getMap().length);
